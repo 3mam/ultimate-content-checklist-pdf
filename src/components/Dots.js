@@ -11,11 +11,11 @@ const Dot = styled.div`
 
 const Green = styled(Dot)`
   background-color: #25eb98;
-	`;
+`;
 
 const White = styled(Dot)`
   background-color: #eff0f1;
-	`;
+`;
 
 const Div = styled.div`
 	display: flex;
