@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
 const Dot = styled.div`
 	border-radius: 50%;
 	width: 15px;
@@ -20,7 +19,7 @@ const White = styled(Dot)`
 const Div = styled.div`
 	display: flex;
 	flex-direction: column;
-`
+`;
 
 const selectGreenColorForDots = (dotNumber) => {
 	const dost = new Array(3).fill({});
@@ -33,6 +32,6 @@ const Dots = ({ selectDot = 0 }) => {
 			{selectGreenColorForDots(selectDot)}
 		</Div>
 	);
-}
+};
 
 export default Dots;
