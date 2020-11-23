@@ -4,7 +4,11 @@ import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 
 const Div = styled.div`
-	margin-right: 104px;
+	max-width: 100%;
+	max-height: 100%;
+  width: 531px;
+  height: 795px;
+	margin: 0 104px 0 0;
 `;
 
 const EbookCover = () => {
@@ -12,8 +16,8 @@ const EbookCover = () => {
 		{
 		cms:datoCmsLandingPageContent {
 				ebookCover {
-					fixed(width: 531, forceBlurhash: false, imgixParams: { fm: "png", auto: "compress" }) {
-						...GatsbyDatoCmsFixed
+					fluid(maxWidth: 531, forceBlurhash: false, imgixParams: { fm: "png", auto: "compress" }) {
+						...GatsbyDatoCmsFluid
 					}
 				}
 			}
@@ -22,7 +26,7 @@ const EbookCover = () => {
 
 	return (
 		<Div>
-			<Img fixed={data.cms.ebookCover.fixed} />
+			<Img fluid={data.cms.ebookCover.fluid} />
 		</Div>
 	);
 };

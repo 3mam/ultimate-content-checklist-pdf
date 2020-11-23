@@ -13,6 +13,8 @@ const Section = styled.section`
 `;
 
 const Button = styled.button`
+	max-width: 100%;
+	max-height: 100%;
   width: 189px;
   height: 45px;
   border-radius: 10px;
