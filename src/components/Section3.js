@@ -51,7 +51,7 @@ const StyleDots = styled.div`
 const Section3 = () => {
 	return (
 		<Background>
-			<Div>
+			<Div id="section3">
 				<Section>
 					<SectionA>
 						<LogoDarkText />

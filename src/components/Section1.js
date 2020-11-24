@@ -54,7 +54,7 @@ const Section1 = () => {
 
 	return (
 		<Background>
-			<Div>
+			<Div id="section1">
 				<Section>
 					<LogoLightText />
 					<SectionA>

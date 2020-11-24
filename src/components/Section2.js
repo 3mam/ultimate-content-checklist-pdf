@@ -47,7 +47,7 @@ const OnMobile = styled(Section)`
 const Section2 = () => {
 	return (
 		<Background>
-			<Div>
+			<Div id="section2">
 				<Section>
 					<SectionA>
 						<LogoDarkText />
