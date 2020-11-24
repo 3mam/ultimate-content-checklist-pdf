@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Dots from '../Dots';
-const Div = styled.div`
+const Cell = styled.div`
   -webkit-text-stroke: 1px black;
 	-webkit-text-fill-color: #00000000;
   font-family: Poppins;
@@ -12,7 +12,13 @@ const Div = styled.div`
   line-height: 1.3;
   letter-spacing: normal;
   text-align: center;
+
+	background-color: #00ef8b;
   color: #171717;
+
+	display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Section = styled.section`
@@ -21,31 +27,32 @@ const Section = styled.section`
 	grid-template-rows: auto auto auto;
 `;
 
-const Ebooks = styled(Section)`
-  margin: 0 0 126px 0px;
-  padding: 84.5px 22.5px 82.5px;
+const Ebooks = styled(Cell)`
+	margin: -100px 0 0 0;
+	width: 139px;
+	height: 195px;
 	grid-row: 1;
   grid-column: 1/3;
-	background-color: #00ef8b;
 `;
 
-const SocialMedia = styled(Section)`
-  margin: 98px -20px 28px 100px;
-  padding: 83px 26px 84px 27px;
+const SocialMedia = styled(Cell)`
+	margin: 0 0 0 150px;
+	width: 197px;
+	height: 195px;
 	grid-row: 1;
   grid-column:3/4;
-	background-color: #00ef8b;
 `;
 
-const Articles = styled(Section)`
-  padding: 146px 54px 118px 55px;
+const Articles = styled(Cell)`
+	margin: 0 0 0 100px;
+	width: 208px;
+	height: 292px;
 	grid-row: 3;
   grid-column: 2/4;
-	background-color: #00ef8b;
-	margin-right: 159px;
 `;
 
 const StyleDots = styled.div`
+	margin: 28px 34px 0 0;
 	grid-row: 2;
 	grid-column: 3;
 	justify-self: end;
@@ -54,14 +61,12 @@ const StyleDots = styled.div`
 const Gird = () => {
 
 	return (
-		<Div>
-			<Section>
-				<Ebooks>E-BOOKS</Ebooks>
-				<SocialMedia>SOCIAL MEDIA</SocialMedia>
-				<StyleDots><Dots selectDot={1} /></StyleDots>
-				<Articles>ARTICLES</Articles>
-			</Section>
-		</Div>
+		<Section>
+			<Ebooks>E-BOOKS</Ebooks>
+			<SocialMedia>SOCIAL MEDIA</SocialMedia>
+			<StyleDots><Dots selectDot={1} /></StyleDots>
+			<Articles>ARTICLES</Articles>
+		</Section>
 	);
 };
 

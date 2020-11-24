@@ -12,8 +12,7 @@ const Background = styled.div`
 `;
 
 const Div = styled.div`
-	margin: 0 360px 0 310px;
-	padding: 100px 0 100px 0; 
+	padding: 100px 0 100px 180px; 
 	@media ${device.mobile} {
 		margin: 0;
 		padding: 0; 
@@ -24,13 +23,11 @@ const Section = styled.section`
 	display: flex;
 	justify-content: center;
 	flex-direction: row;
-
 `;
 
 const SectionA = styled(Section)`
 	flex-direction: column;
-	flex-basis: 500px;
-	flex-shrink: 0;
+	margin: 0 0 0 0;
 	@media ${device.mobile} {
 	flex-basis: auto;
 	flex-shrink: 3;
@@ -38,6 +35,7 @@ const SectionA = styled(Section)`
 `;
 
 const OnMobile = styled(Section)`
+	justify-content: flex-start;
 	@media ${device.mobile} {
 		visibility: hidden;
 		margin: 0 -400px 0 0;

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 import { FaFacebookF, FaInstagram, FaAngellist } from 'react-icons/fa';
 const Div = styled.div`
-  margin-left: 39px;
 	display: flex;
 	flex-direction: row;
 `;

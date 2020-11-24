@@ -4,8 +4,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import device from '../utils/device'
 
 const Div = styled.div`
-	margin-right: -90px;
-	margin-top: 30px;
+	margin: 30px 0 0 -45px;
 	@media ${device.mobile} {
 		visibility: hidden;
 	}

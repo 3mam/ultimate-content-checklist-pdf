@@ -4,7 +4,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import device from '../../utils/device';
 
 const Div = styled.div`
-  margin: 44px 0px 145px 42px;
+  margin: 44px 0px 145px 0;
   font-family: Poppins;
   font-size: 18px;
   font-weight: normal;
