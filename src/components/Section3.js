@@ -40,6 +40,9 @@ const SectionB = styled(Section)`
 
 const StyleDots = styled.div`
 	margin: 0 0 0 71px;
+	@media screen and (max-width: 1100px) {
+		visibility: hidden;
+	}
 `;
 
 const Section3 = () => {
