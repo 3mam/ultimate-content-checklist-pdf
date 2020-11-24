@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 
 const Div = styled.div`
-  margin: 44px 96px 145px 42px;
+  margin: 44px 0px 145px 42px;
   font-family: Poppins;
   font-size: 18px;
   font-weight: normal;

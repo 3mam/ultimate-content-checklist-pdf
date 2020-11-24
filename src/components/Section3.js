@@ -19,6 +19,8 @@ const Section = styled.section`
 	display: flex;
 	justify-content: center;
 	flex-direction: row;
+	flex-basis: 440px;
+	flex-shrink: 0;
 `;
 
 const SectionA = styled(Section)`

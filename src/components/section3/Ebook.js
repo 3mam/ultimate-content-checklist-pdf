@@ -10,6 +10,7 @@ const Background = styled.div`
 const Section = styled.section`
 	display: flex;
 	flex-direction: column;
+	width: 313px;
 `;
 
 const Button = styled.button`
