@@ -25,6 +25,8 @@ const Section = styled.section`
 
 const SectionA = styled(Section)`
 	flex-direction: column;
+	flex-basis: 500px;
+	flex-shrink: 0;
 `;
 
 const HidingElementOnMobile = styled(Section)`
