@@ -5,13 +5,16 @@ import device from '../../utils/device';
 
 const Div = styled.div`
 	display: flex;
-	position: relative;
 
 	@media ${device.mobile} {
 		flex-direction: column;
 		align-items: stretch;
 		justify-content: stretch;
 	}
+`;
+
+const Label = styled.label`
+	position: relative;
 `;
 
 const Button = styled.button`
@@ -75,8 +78,10 @@ const Email = () => {
 
 	return (
 		<Div>
-			<Input type="text" placeholder=" " />
-			<Span>{data.cms.emailPlaceholder}</Span>
+			<Label>
+				<Input type="text" placeholder=" " />
+				<Span>{data.cms.emailPlaceholder}</Span>
+			</Label>
 			<Button>{data.cms.emailButtonText}</Button >
 		</Div>
 	);
