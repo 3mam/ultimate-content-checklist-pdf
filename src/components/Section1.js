@@ -14,21 +14,39 @@ const Background = styled.div`
 const Div = styled.div`
 	margin: 0 310px 0 310px;
 	padding: 100px 0 100px 0; 
+	@media screen and (max-width: 1100px) {
+		margin: 0;
+		padding: 0 20px 0 20px;
+	}
 `;
 
 const Section = styled.section`
 	display: flex;
 	justify-content: center;
 	flex-direction: row;
+	flex-basis: 500px;
+	flex-shrink: 0;
+	@media screen and (max-width: 1100px) {
+		flex-direction: column;
+	}
 `;
 
 const SectionA = styled(Section)`
 	flex-direction: column;
-	margin-bottom: 100px;
+	margin: 0 0 100px 0;
 `;
 
 const SectionB = styled(Section)`
 	align-items: center;
+	@media screen and (max-width: 1100px) {
+		flex-direction: row;
+	}
+`;
+
+const StyleDots = styled.div`
+	@media screen and (max-width: 1100px) {
+		visibility: hidden;
+	}
 `;
 
 const Section1 = () => {
@@ -45,7 +63,7 @@ const Section1 = () => {
 					</SectionA>
 					<SectionB>
 						<EbookCover />
-						<Dots selectDot={0} />
+						<StyleDots><Dots selectDot={0} /></StyleDots>
 					</SectionB>
 				</Section>
 			</Div>

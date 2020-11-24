@@ -4,11 +4,8 @@ import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 
 const Div = styled.div`
-	max-width: 100%;
-	max-height: 100%;
   width: 531px;
   height: 795px;
-	margin: 0 104px 0 0;
 `;
 
 const EbookCover = () => {
