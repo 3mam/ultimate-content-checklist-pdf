@@ -14,8 +14,8 @@ const Background = styled.div`
 const Div = styled.div`
 	padding: 0 0 100px 180px; 
 	@media ${device.mobile} {
-		margin: 0 0 100px 0;
-		padding: 0; 
+		margin: 0 0 50px 0;
+		padding: 0 20px 0 0;
 	}
 `;
 
@@ -38,7 +38,8 @@ const OnMobile = styled(Section)`
 	justify-content: flex-start;
 	@media ${device.mobile} {
 		visibility: hidden;
-		margin: 0 -460px 0 0;
+		position:absolute;
+		//margin: 0 -460px -100px 0;
 		padding: 0;
 	}
 `;

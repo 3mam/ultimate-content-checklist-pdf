@@ -15,7 +15,7 @@ const Background = styled.div`
 const Div = styled.div`
 	padding: 0 33px 0 136px; 
 	@media ${device.mobile} {
-		margin: 0 0 100px 0;
+		margin: 0 0 50px 0;
 		padding: 0 20px 0 20px;
 	}
 `;
