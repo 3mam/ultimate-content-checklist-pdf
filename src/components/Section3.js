@@ -13,6 +13,10 @@ const Background = styled.div`
 const Div = styled.div`
 	margin: 0 310px 0 310px;
 	padding: 100px 0 100px 0; 
+	@media screen and (max-width: 1100px) {
+		margin: 0 20px;
+		padding: 0; 
+	}
 `;
 
 const Section = styled.section`
@@ -21,6 +25,9 @@ const Section = styled.section`
 	flex-direction: row;
 	flex-basis: 440px;
 	flex-shrink: 0;
+	@media screen and (max-width: 1100px) {
+		flex-direction: column;
+	}
 `;
 
 const SectionA = styled(Section)`
