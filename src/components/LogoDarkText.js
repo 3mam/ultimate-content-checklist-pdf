@@ -5,6 +5,9 @@ import { graphql, useStaticQuery } from 'gatsby';
 const Div = styled.div`
 	margin-right: -90px;
 	margin-top: 30px;
+	@media screen and (max-width: 1100px) {
+		visibility: hidden;
+	}
 `;
 
 const Img = styled.img`
