@@ -28,7 +28,7 @@ const Section = styled.section`
 `;
 
 const Ebooks = styled(Cell)`
-	margin: -100px 0 0 0;
+	margin: 0 0 0 0;
 	width: 139px;
 	height: 195px;
 	grid-row: 1;
@@ -36,7 +36,7 @@ const Ebooks = styled(Cell)`
 `;
 
 const SocialMedia = styled(Cell)`
-	margin: 0 0 0 150px;
+	margin: 101px 0 0 150px;
 	width: 197px;
 	height: 195px;
 	grid-row: 1;

@@ -2,10 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
+import device from '../../utils/device';
 
 const Div = styled.div`
   width: 531px;
   height: 795px;
+	@media ${device.mobile} {
+		justify-content: center;
+  	align-items: center;
+		margin: 0;
+		width: 100%;
+		height: auto;
+	}
 `;
 
 const EbookCover = () => {

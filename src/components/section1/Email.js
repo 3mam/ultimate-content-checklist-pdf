@@ -4,9 +4,8 @@ import { graphql, useStaticQuery } from 'gatsby';
 import device from '../../utils/device';
 
 const Div = styled.div`
-	@media ${device.mobile} {
-		width: auto;
 		display: flex;
+	@media ${device.mobile} {
 		flex-direction: column;
 		align-items: stretch;
 		justify-content: stretch;
@@ -19,7 +18,6 @@ const Button = styled.button`
   border-radius: 10px;
   background-color: #25eb98;
 	@media ${device.mobile} {
-		margin: 0 0 64px 0;
 		width: auto;
 		height: 60px;
 	}

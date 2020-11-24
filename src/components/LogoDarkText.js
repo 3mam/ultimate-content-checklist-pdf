@@ -6,6 +6,7 @@ import device from '../utils/device'
 const Div = styled.div`
 	margin: 30px 0 0 -45px;
 	@media ${device.mobile} {
+		margin: 0;
 		visibility: hidden;
 	}
 `;

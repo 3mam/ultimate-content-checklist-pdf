@@ -13,9 +13,9 @@ const Background = styled.div`
 `;
 
 const Div = styled.div`
-	padding: 100px 33px 100px 136px; 
+	padding: 0 33px 0 136px; 
 	@media ${device.mobile} {
-		margin: 0;
+		margin: 0 0 100px 0;
 		padding: 0 20px 0 20px;
 	}
 `;
@@ -31,19 +31,21 @@ const Section = styled.section`
 
 const SectionA = styled(Section)`
 	flex-direction: column;
-	margin: 0 0 100px 0;
 `;
 
 const SectionB = styled(Section)`
 	align-items: center;
 	@media ${device.mobile} {
 		flex-direction: row;
+		justify-content: center;
+  	align-items: flex-start;
 	}
 `;
 
 const StyleDots = styled.div`
 	margin: 0 0 0 55px;
 	@media ${device.mobile} {
+		margin: 0;
 		visibility: hidden;
 	}
 `;

@@ -12,7 +12,7 @@ const Background = styled.div`
 `;
 
 const Div = styled.div`
-	padding: 100px 35px 100px 180px; 
+	padding: 0 35px 100px 180px; 
 	@media ${device.mobile} {
 		margin: 0 20px 0 0;
 		padding: 0; 
@@ -31,6 +31,9 @@ const Section = styled.section`
 const SectionA = styled(Section)`
 	margin: 0 100px 0 0;
 	flex-direction: column;
+	@media ${device.mobile} {
+		margin: 0;
+	}
 `;
 
 const SectionB = styled(Section)`
@@ -40,6 +43,7 @@ const SectionB = styled(Section)`
 const StyleDots = styled.div`
 	margin: 0 0 0 71px;
 	@media ${device.mobile} {
+		margin: 0;
 		visibility: hidden;
 	}
 `;

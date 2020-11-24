@@ -5,25 +5,31 @@ import styled from 'styled-components';
 import Section1 from '../components/Section1'
 import Section2 from '../components/Section2'
 import Section3 from '../components/Section3'
+import device from '../utils/device'
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
 const Div = styled.div`
-	//position:fixed;
+	position:fixed;
 	top:0;
 	bottom:0;
 	left:0;
 	right:0;
-	//overflow-y: scroll;
+	overflow-y: scroll;
 	display: flex;
 	justify-content: center;
 `;
 
 const Section = styled.section`
 	flex-direction: column;
-	flex-basis: 1500px;
+	flex-basis: 1350px;
+	@media ${device.mobile} {
+		flex-basis: auto;
+		align-items: stretch;
+		justify-content: stretch;
+	}
 `
 
 const HomePage = () => {
