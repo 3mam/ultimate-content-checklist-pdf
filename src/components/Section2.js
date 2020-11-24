@@ -11,7 +11,7 @@ const Background = styled.div`
 `;
 
 const Div = styled.div`
-	margin: 0 310px 0 310px;
+	margin: 0 360px 0 310px;
 	padding: 100px 0 100px 0; 
 
 `;
@@ -27,8 +27,10 @@ const SectionA = styled(Section)`
 	flex-direction: column;
 `;
 
-const SectionB = styled(Section)`
-
+const HidingElementOnMobile = styled(Section)`
+	@media screen and (max-width: 1100px) {
+		visibility: hidden;
+	}
 `;
 
 const Section2 = () => {
@@ -40,11 +42,13 @@ const Section2 = () => {
 						<LogoDarkText />
 						<WhatSectionTitle />
 						<WhatSectionParagraph />
-						<SocialMediaLinks />
+						<HidingElementOnMobile>
+							<SocialMediaLinks />
+						</HidingElementOnMobile>
 					</SectionA>
-					<SectionB>
+					<HidingElementOnMobile>
 						<Grid />
-					</SectionB>
+					</HidingElementOnMobile>
 				</Section>
 			</Div>
 		</Background>
