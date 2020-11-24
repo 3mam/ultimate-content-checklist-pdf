@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
+import device from '../../utils/device';
 
 const Div = styled.div`
   margin: 128px 0 0 42px;
@@ -13,7 +14,7 @@ const Div = styled.div`
   letter-spacing: normal;
   text-align: left;
   color: #171717;
-	@media screen and (max-width: 1100px) {
+	@media ${device.mobile} {
 		margin: 0 0 0 20px;
 	}
 `;

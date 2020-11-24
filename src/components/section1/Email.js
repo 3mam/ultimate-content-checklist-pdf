@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
+import device from '../../utils/device';
 
 const Div = styled.div`
-	@media screen and (max-width: 1100px) {
-	width: auto;
+	@media ${device.mobile} {
+		width: auto;
 		display: flex;
 		flex-direction: column;
 		align-items: stretch;
@@ -17,7 +18,7 @@ const Button = styled.button`
   height: 100%;
   border-radius: 10px;
   background-color: #25eb98;
-	@media screen and (max-width: 1100px) {
+	@media ${device.mobile} {
 		margin: 0 0 64px 0;
 		width: auto;
 		height: 60px;
@@ -30,7 +31,7 @@ const Input = styled.input`
   border-radius: 10px;
   background-color: #ffffff;
 	margin: 0 14px 0 0;
-	@media screen and (max-width: 1100px) {
+	@media ${device.mobile} {
 		margin: 0 0 19px 0;
 		width: auto;
 	}

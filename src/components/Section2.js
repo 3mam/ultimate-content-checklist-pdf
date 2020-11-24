@@ -5,6 +5,7 @@ import SocialMediaLinks from './section2/SocialMediaLinks';
 import WhatSectionParagraph from './section2/WhatSectionParagraph';
 import WhatSectionTitle from './section2/WhatSectionTitle';
 import Grid from './section2/Grid';
+import device from '../utils/device';
 
 const Background = styled.div`
   background-color: #ffffff;
@@ -13,7 +14,7 @@ const Background = styled.div`
 const Div = styled.div`
 	margin: 0 360px 0 310px;
 	padding: 100px 0 100px 0; 
-	@media screen and (max-width: 1100px) {
+	@media ${device.mobile} {
 		margin: 0;
 		padding: 0; 
 	}
@@ -30,15 +31,14 @@ const SectionA = styled(Section)`
 	flex-direction: column;
 	flex-basis: 500px;
 	flex-shrink: 0;
-	@media screen and (max-width: 1100px) {		
+	@media ${device.mobile} {
 	flex-basis: auto;
-
 	flex-shrink: 3;
 	}																												 
 `;
 
 const OnMobile = styled(Section)`
-	@media screen and (max-width: 1100px) {
+	@media ${device.mobile} {
 		visibility: hidden;
 		margin: 0 -400px 0 0;
 		padding: 0;

@@ -6,6 +6,7 @@ import LogoLightText from './LogoLightText';
 import HeroTitle from './section1/HeroTitle'
 import HeroTextParagraph from './section1/HeroTextParagraph'
 import Email from './section1/Email'
+import device from '../utils/device'
 
 const Background = styled.div`
 	background-color: #171717;
@@ -14,7 +15,7 @@ const Background = styled.div`
 const Div = styled.div`
 	margin: 0 310px 0 310px;
 	padding: 100px 0 100px 0; 
-	@media screen and (max-width: 1100px) {
+	@media ${device.mobile} {
 		margin: 0;
 		padding: 0 20px 0 20px;
 	}
@@ -26,7 +27,7 @@ const Section = styled.section`
 	flex-direction: row;
 	flex-basis: 500px;
 	flex-shrink: 0;
-	@media screen and (max-width: 1100px) {
+	@media ${device.mobile} {
 		flex-direction: column;
 	}
 `;
@@ -38,13 +39,13 @@ const SectionA = styled(Section)`
 
 const SectionB = styled(Section)`
 	align-items: center;
-	@media screen and (max-width: 1100px) {
+	@media ${device.mobile} {
 		flex-direction: row;
 	}
 `;
 
 const StyleDots = styled.div`
-	@media screen and (max-width: 1100px) {
+	@media ${device.mobile} {
 		visibility: hidden;
 	}
 `;
