@@ -46,7 +46,6 @@ const Articles = styled(Section)`
 `;
 
 const StyleDots = styled.div`
-	margin-left: 159px;
 	grid-row: 2;
 	grid-column: 3;
 	justify-self: end;

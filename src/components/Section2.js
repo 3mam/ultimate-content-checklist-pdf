@@ -13,7 +13,10 @@ const Background = styled.div`
 const Div = styled.div`
 	margin: 0 360px 0 310px;
 	padding: 100px 0 100px 0; 
-
+	@media screen and (max-width: 1100px) {
+		margin: 0;
+		padding: 0; 
+	}
 `;
 
 const Section = styled.section`
@@ -27,11 +30,18 @@ const SectionA = styled(Section)`
 	flex-direction: column;
 	flex-basis: 500px;
 	flex-shrink: 0;
+	@media screen and (max-width: 1100px) {		
+	flex-basis: auto;
+
+	flex-shrink: 3;
+	}																												 
 `;
 
-const HidingElementOnMobile = styled(Section)`
+const OnMobile = styled(Section)`
 	@media screen and (max-width: 1100px) {
 		visibility: hidden;
+		margin: 0 -400px 0 0;
+		padding: 0;
 	}
 `;
 
@@ -44,13 +54,13 @@ const Section2 = () => {
 						<LogoDarkText />
 						<WhatSectionTitle />
 						<WhatSectionParagraph />
-						<HidingElementOnMobile>
+						<OnMobile>
 							<SocialMediaLinks />
-						</HidingElementOnMobile>
+						</OnMobile>
 					</SectionA>
-					<HidingElementOnMobile>
+					<OnMobile>
 						<Grid />
-					</HidingElementOnMobile>
+					</OnMobile>
 				</Section>
 			</Div>
 		</Background>
