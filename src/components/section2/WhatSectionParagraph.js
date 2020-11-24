@@ -13,6 +13,9 @@ const Div = styled.div`
   letter-spacing: normal;
   text-align: left;
   color: #585858;
+	@media screen and (max-width: 1100px) {
+		margin: 0 0 0 20px;
+	}
 `;
 
 const WhatSectionParagraph = () => {

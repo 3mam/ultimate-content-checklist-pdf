@@ -13,7 +13,6 @@ const Div = styled.div`
   text-align: left;
   color: #ffffff;
 	margin-bottom: 44px;
-	margin-right: 44px;
 `;
 
 const HeroTextParagraph = () => {

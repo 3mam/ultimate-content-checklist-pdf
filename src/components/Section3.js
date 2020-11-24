@@ -14,7 +14,7 @@ const Div = styled.div`
 	margin: 0 310px 0 310px;
 	padding: 100px 0 100px 0; 
 	@media screen and (max-width: 1100px) {
-		margin: 0 20px;
+		margin: 0 20px 0 0;
 		padding: 0; 
 	}
 `;
