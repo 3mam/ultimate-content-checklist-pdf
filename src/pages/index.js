@@ -1,5 +1,4 @@
-import React, { useRef, useEffect } from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
+import React from 'react';
 import SEO from '../components/SEO';
 import styled from 'styled-components';
 import Section1 from '../components/Section1'
@@ -26,7 +25,7 @@ const Div = styled.div`
   scroll-snap-type: mandatory;
   scroll-snap-points-y: repeat(100vh);
   scroll-snap-type: y mandatory;
-  transition: background-color  0.5s;
+
 	@media ${device.mobile} {
 		scroll-snap-type: none;
 	}
@@ -43,21 +42,6 @@ const Section = styled.section`
 `;
 
 const HomePage = () => {
-	let isBackgroundWhite = false;
-	useEffect(() => {
-		window.addEventListener('wheel', event => {
-
-			const move = event.deltaY;
-			//	console.log(move)
-			if (move > 0) {
-				isBackgroundWhite = true;
-				//gsap.to(window, { duration: 1, scrollTo: { y: "#section2", offsetY: 0 } })
-			} else if (move < 0) {
-				//gsap.to(window, { duration: 1, scrollTo: { y: "#section1", offsetY: 10 } })
-				isBackgroundWhite = false;
-			}
-		})
-	})
 	return (
 		<div >
 			<Div>
