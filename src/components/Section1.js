@@ -59,10 +59,9 @@ const SectionC = styled(Section)`
 `;
 
 const StyleDots = styled.div`
-	margin: 0 0 0 0;
+	margin: 0;
 	@media ${device.mobile} {
-		margin: 0;
-		visibility: hidden;
+		display: none;
 	}
 `;
 
