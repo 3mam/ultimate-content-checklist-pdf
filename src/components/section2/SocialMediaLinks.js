@@ -2,9 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 import { FaFacebookF, FaInstagram, FaAngellist } from 'react-icons/fa';
+import device from '../../utils/device';
+
 const Div = styled.div`
 	display: flex;
 	flex-direction: row;
+	@media ${device.mobile} {
+		display: none;
+	}
 `;
 
 const Icon = styled.a`

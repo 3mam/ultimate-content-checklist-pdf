@@ -1,6 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import Dots from '../Dots';
+import device from '../../utils/device';
+
+const Div = styled.div`
+	@media ${device.mobile} {
+		display: none;
+	}
+`;
+
 const Cell = styled.div`
   -webkit-text-stroke: 1px black;
 	-webkit-text-fill-color: #00000000;
@@ -61,12 +69,14 @@ const StyleDots = styled.div`
 const Gird = () => {
 
 	return (
-		<Section>
-			<Ebooks>E-BOOKS</Ebooks>
-			<SocialMedia>SOCIAL MEDIA</SocialMedia>
-			<StyleDots><Dots selectDot={1} /></StyleDots>
-			<Articles>ARTICLES</Articles>
-		</Section>
+		<Div>
+			<Section>
+				<Ebooks>E-BOOKS</Ebooks>
+				<SocialMedia>SOCIAL MEDIA</SocialMedia>
+				<StyleDots><Dots selectDot={1} /></StyleDots>
+				<Articles>ARTICLES</Articles>
+			</Section>
+		</Div>
 	);
 };
 
