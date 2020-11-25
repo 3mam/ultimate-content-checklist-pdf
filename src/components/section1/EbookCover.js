@@ -5,8 +5,8 @@ import Img from 'gatsby-image';
 import device from '../../utils/device';
 
 const Div = styled.div`
-  width: 531px;
-  height: 795px;
+  width: 440px;
+  height: auto;
 	@media ${device.mobile} {
 		justify-content: center;
   	align-items: center;

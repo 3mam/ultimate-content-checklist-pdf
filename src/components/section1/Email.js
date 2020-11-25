@@ -14,6 +14,8 @@ const Div = styled.div`
 `;
 
 const Label = styled.label`
+	display: flex;
+	flex-direction: column;
 	position: relative;
 `;
 
@@ -35,13 +37,14 @@ const Span = styled.span`
   left: 20px;
 	bottom: 23px;
 	@media ${device.mobile} {
-		bottom: 100px;
+		bottom: 41px;
 	}
   cursor: text;
   transition: all 0.5s ease-in-out ;
 `;
 
 const Input = styled.input`
+
   width: 310px;
   height: 60px;
   border-radius: 10px;
@@ -52,6 +55,7 @@ const Input = styled.input`
 	@media ${device.mobile} {
 		margin: 0 0 19px 0;
 		width: auto;
+
 	}
 
 	&:not(:placeholder-shown) + ${Span.toString()},

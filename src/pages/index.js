@@ -9,6 +9,7 @@ import device from '../utils/device'
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
 const Div = styled.div`
@@ -17,9 +18,18 @@ const Div = styled.div`
 	bottom:0;
 	left:0;
 	right:0;
+	margin: 0;
 	overflow-y: scroll;
+	overflow-x: hidden;
 	display: flex;
 	justify-content: center;
+  scroll-snap-type: mandatory;
+  scroll-snap-points-y: repeat(100vh);
+  scroll-snap-type: y mandatory;
+  transition: background-color  0.5s;
+	@media ${device.mobile} {
+		scroll-snap-type: none;
+	}
 `;
 
 const Section = styled.section`
@@ -30,20 +40,35 @@ const Section = styled.section`
 		align-items: stretch;
 		justify-content: stretch;
 	}
-`
+`;
 
 const HomePage = () => {
+	let isBackgroundWhite = false;
 	useEffect(() => {
+		window.addEventListener('wheel', event => {
+
+			const move = event.deltaY;
+			//	console.log(move)
+			if (move > 0) {
+				isBackgroundWhite = true;
+				//gsap.to(window, { duration: 1, scrollTo: { y: "#section2", offsetY: 0 } })
+			} else if (move < 0) {
+				//gsap.to(window, { duration: 1, scrollTo: { y: "#section1", offsetY: 10 } })
+				isBackgroundWhite = false;
+			}
+		})
 	})
 	return (
-		<Div>
-			<SEO title="Ultimate content checklist" />
-			<Section>
-				<Section1 />
-				<Section2 />
-				<Section3 />
-			</Section>
-		</Div>
+		<div >
+			<Div>
+				<SEO title="Ultimate content checklist" />
+				<Section>
+					<Section1 />
+					<Section2 />
+					<Section3 />
+				</Section>
+			</Div>
+		</div>
 	);
 };
 

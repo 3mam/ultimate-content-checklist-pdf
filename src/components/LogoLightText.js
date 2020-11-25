@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 
 const Div = styled.div`
-	margin: 30px -90px 0 0;
+	margin: 0 0 0 -40px;
 `;
 
 const Img = styled.img`
