@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import device from '../utils/device'
 
 const Dot = styled.div`
 	border-radius: 50%;
@@ -19,6 +20,9 @@ const White = styled(Dot)`
 const Div = styled.div`
 	display: flex;
 	flex-direction: column;
+	@media ${device.mobile} {
+		display: none;
+	}
 `;
 
 const selectGreenColorForDots = (dotNumber) => {

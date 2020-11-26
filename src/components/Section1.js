@@ -58,13 +58,6 @@ const SectionC = styled(Section)`
 	}
 `;
 
-const StyleDots = styled.div`
-	margin: 0;
-	@media ${device.mobile} {
-		display: none;
-	}
-`;
-
 const Section1 = () => {
 
 	return (
@@ -80,7 +73,7 @@ const Section1 = () => {
 				</SectionB>
 				<SectionC>
 					<EbookCover />
-					<StyleDots><Dots selectDot={0} /></StyleDots>
+					<Dots selectDot={0} />
 				</SectionC>
 			</Section>
 		</Div>
