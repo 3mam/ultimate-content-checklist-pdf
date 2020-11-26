@@ -9,7 +9,7 @@ const Div = styled.div`
 const Img = styled.img`
 	width: 133px;
   height: 14px;
-`
+`;
 
 const LogoLightText = () => {
 	const data = useStaticQuery(graphql`
@@ -23,7 +23,7 @@ const LogoLightText = () => {
 `);
 
 	return (
-		<Div>
+		<Div id='logoLightText'>
 			<Img src={data.cms.logoLightText.url} />
 		</Div>
 	);

@@ -34,7 +34,7 @@ const SocialMediaLinks = () => {
 	`);
 	const iconSize = 20;
 	return (
-		<Div>
+		<Div id='socialMediaLinks'>
 			<Icon href={data.cms.socialMediaLinks[0].link}><FaFacebookF size={iconSize} /></Icon>
 			<Icon href={data.cms.socialMediaLinks[1].link}><FaInstagram size={iconSize} /></Icon>
 			<Icon href={data.cms.socialMediaLinks[2].link}><FaAngellist size={iconSize} /></Icon>

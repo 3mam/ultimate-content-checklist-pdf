@@ -28,7 +28,7 @@ const LogoDarkText = () => {
 `);
 
 	return (
-		<Div>
+		<Div id='logoDarkText'>
 			<Img src={data.cms.logoDarkText.url} />
 		</Div>
 	);

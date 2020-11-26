@@ -31,7 +31,7 @@ const AllInParagraph = () => {
 	const htmlString = { __html: data.cms.allInParagraph }
 
 	return (
-		<Div dangerouslySetInnerHTML={htmlString} />
+		<Div id='allInParagraph' dangerouslySetInnerHTML={htmlString} />
 	);
 };
 

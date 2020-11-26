@@ -31,7 +31,7 @@ const WhatSectionParagraph = () => {
 	const htmlString = { __html: data.cms.whatSectionParagraph }
 
 	return (
-		<Div dangerouslySetInnerHTML={htmlString} />
+		<Div id='whatSectionParagraph' dangerouslySetInnerHTML={htmlString} />
 	);
 };
 

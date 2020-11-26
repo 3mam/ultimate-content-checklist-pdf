@@ -67,9 +67,8 @@ const StyleDots = styled.div`
 `;
 
 const Gird = () => {
-
 	return (
-		<Div>
+		<Div id='grid'>
 			<Section>
 				<Ebooks>E-BOOKS</Ebooks>
 				<SocialMedia>SOCIAL MEDIA</SocialMedia>

@@ -29,7 +29,7 @@ const WhatSectionTitle = () => {
 	`);
 
 	return (
-		<Div>
+		<Div id='whatSectionTitle'>
 			{data.cms.whatSectionTitle}
 		</Div>
 	);

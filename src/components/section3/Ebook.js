@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 
-const Background = styled.div`
+const Div = styled.div`
   background-color: #171717;
 `;
 
@@ -56,13 +56,13 @@ const Ebook = () => {
 `);
 
 	return (
-		<Background>
+		<Div id='ebook'>
 			<Section>
 				<EbookTitle>{data.cms.ebookTitle}</EbookTitle>
 				<Cover fixed={data.cms.ebookGraphic.fixed} />
 				<Button>{data.cms.ebookBtnText}</Button >
 			</Section>
-		</Background>
+		</Div>
 	);
 };
 

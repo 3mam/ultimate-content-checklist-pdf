@@ -29,7 +29,7 @@ const AllInTitle = () => {
 `);
 
 	return (
-		<Div>
+		<Div id='allInTitle'>
 			{data.cms.allInTitle}
 		</Div>
 	);
