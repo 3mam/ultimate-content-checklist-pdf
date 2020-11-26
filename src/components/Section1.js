@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Dots from './Dots'
 import EbookCover from './section1/EbookCover';
@@ -11,13 +11,11 @@ import device from '../utils/device'
 const Div = styled.div`
 	background-color: #171717;
 	padding: 0 0 100px 170px; 
-
 	scroll-snap-align: start;
 	width: 100vw;
 	height: 100vh;
 	display: flex;
 	justify-content: center;
-	
 	@media ${device.mobile} {
 		margin: 0 0 50px 0;
 		padding: 0 20px 0 20px;
@@ -59,7 +57,6 @@ const SectionC = styled(Section)`
 `;
 
 const Section1 = () => {
-
 	return (
 		<Div id="section1">
 			<Section>
