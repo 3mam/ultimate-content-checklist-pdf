@@ -2,6 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import device from '../utils/device'
 
+const Div = styled.div`
+	position: fixed;
+	top: 45vh;
+	right: 5vw;
+	display: flex;
+	flex-direction: column;
+
+	@media ${device.mobile} {
+		display: none;
+	}
+`;
+
 const Dot = styled.div`
 	border-radius: 50%;
 	width: 15px;
@@ -15,14 +27,6 @@ const Green = styled(Dot)`
 
 const White = styled(Dot)`
   background-color: #eff0f1;
-`;
-
-const Div = styled.div`
-	display: flex;
-	flex-direction: column;
-	@media ${device.mobile} {
-		display: none;
-	}
 `;
 
 const selectGreenColorForDots = (dotNumber) => {

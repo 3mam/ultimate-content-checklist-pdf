@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Dots from '../Dots';
 import device from '../../utils/device';
 
 const Div = styled.div`
@@ -59,8 +58,10 @@ const Articles = styled(Cell)`
   grid-column: 2/4;
 `;
 
-const StyleDots = styled.div`
+const EmptySpace = styled.div`
 	margin: 28px 34px 0 0;
+	width: 15px;
+	height: 111px;
 	grid-row: 2;
 	grid-column: 3;
 	justify-self: end;
@@ -72,7 +73,7 @@ const Gird = () => {
 			<Section>
 				<Ebooks>E-BOOKS</Ebooks>
 				<SocialMedia>SOCIAL MEDIA</SocialMedia>
-				<StyleDots><Dots selectDot={1} /></StyleDots>
+				<EmptySpace />
 				<Articles>ARTICLES</Articles>
 			</Section>
 		</Div>

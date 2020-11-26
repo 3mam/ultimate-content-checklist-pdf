@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Dots from './Dots'
 import EbookCover from './section1/EbookCover';
 import LogoLightText from './LogoLightText';
 import HeroTitle from './section1/HeroTitle'
@@ -70,7 +69,6 @@ const Section1 = () => {
 				</SectionB>
 				<SectionC>
 					<EbookCover />
-					<Dots selectDot={0} />
 				</SectionC>
 			</Section>
 		</Div>

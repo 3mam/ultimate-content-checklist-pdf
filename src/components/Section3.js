@@ -4,7 +4,6 @@ import LogoDarkText from './LogoDarkText';
 import AllInTitle from '../components/section3/AllInTitle'
 import AllInParagraph from '../components/section3/AllInParagraph'
 import Ebook from './section3/Ebook';
-import Dots from './Dots';
 import device from '../utils/device';
 
 const Div = styled.div`
@@ -65,7 +64,6 @@ const Section3 = () => {
 				</SectionA>
 				<SectionB>
 					<Ebook />
-					<StyleDots><Dots selectDot={2} /></StyleDots>
 				</SectionB>
 			</Section>
 		</Div>

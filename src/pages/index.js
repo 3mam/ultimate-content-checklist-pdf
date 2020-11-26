@@ -8,6 +8,7 @@ import device from '../utils/device'
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Dots from '../components/Dots';
 
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
@@ -94,6 +95,7 @@ const HomePage = () => {
 			<Div >
 				<SEO title="Ultimate content checklist" />
 				<Section id='fooo'>
+					<Dots selectDot={0} />
 					<Section1 />
 					<Section2 />
 					<Section3 />
