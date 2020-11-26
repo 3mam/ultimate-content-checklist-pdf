@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SEO from '../components/SEO';
 import styled from 'styled-components';
 import Section1 from '../components/Section1'
@@ -12,20 +12,17 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
 const Div = styled.div`
-	position:fixed;
-	top:0;
-	bottom:0;
-	left:0;
-	right:0;
+	position: absolute;
+  top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
 	margin: 0;
-	overflow-y: scroll;
-	overflow-x: hidden;
 	display: flex;
 	justify-content: center;
   scroll-snap-type: mandatory;
   scroll-snap-points-y: repeat(100vh);
   scroll-snap-type: y mandatory;
-
 	@media ${device.mobile} {
 		scroll-snap-type: none;
 	}
@@ -33,7 +30,6 @@ const Div = styled.div`
 
 const Section = styled.section`
 	flex-direction: column;
-	flex-basis: 1350px;
 	@media ${device.mobile} {
 		flex-basis: auto;
 		align-items: stretch;
@@ -42,11 +38,62 @@ const Section = styled.section`
 `;
 
 const HomePage = () => {
+	useEffect(() => {
+		const heroTitle = document.getElementById('heroTitle');
+		const heroTextParagraph = document.getElementById('heroTextParagraph');
+		const email = document.getElementById('email');
+		const ebookCover = document.getElementById('ebookCover');
+		const dots = document.getElementById('dots');
+		const [dot1, dot2, dot3] = dots.children;
+		const [input, button] = email.children;
+
+		const whatSectionTitle = document.getElementById('whatSectionTitle');
+		const section2 = document.getElementById('section2');
+
+		const t1 = gsap.timeline({ defaults: {} });
+		const t2 = gsap.timeline({ defaults: {} });
+		const t3 = gsap.timeline({ defaults: {} });
+		const t4 = gsap.timeline({ defaults: {} });
+		const t5 = gsap.timeline({
+			defaults: {}, scrollTrigger: {
+				trigger: section2, start: 'top 20%'
+			}
+		});
+
+		gsap.set([
+			heroTitle,
+			heroTextParagraph,
+			ebookCover,
+			dot1, dot2, dot3,
+			input, button,
+			whatSectionTitle,
+		], { autoAlpha: 0 });
+
+		t1.delay(1.1)
+			.fromTo(heroTitle, { x: '-=120' }, { duration: 0.6, x: '+=120', autoAlpha: 1 })
+			.fromTo(heroTextParagraph, { x: '-=120' }, { duration: 0.6, x: '+=120', autoAlpha: 1 }, '-=0.3')
+		t2.delay(1.5)
+			.fromTo(ebookCover, {}, { duration: 3, autoAlpha: 1 });
+		t3.delay(1.1)
+			.fromTo(dot1, { x: '+=20' }, { duration: 0.4, x: '-=20', autoAlpha: 1 })
+			.fromTo(dot2, { x: '+=20' }, { duration: 0.4, x: '-=20', autoAlpha: 1 }, '-=0.2')
+			.fromTo(dot3, { x: '+=20' }, { duration: 0.4, x: '-=20', autoAlpha: 1 }, '-=0.2');
+		t4.delay(1.5)
+			.fromTo(input, { y: '+=20' }, { duration: 1, y: '-=20', autoAlpha: 1 })
+			.fromTo(button, { y: '+=20' }, { duration: 1, y: '-=20', autoAlpha: 1 }, '-=0.7');
+
+
+		t5.delay(1.5)
+			.fromTo(whatSectionTitle, { y: '-=80' }, {
+				y: '+=80', autoAlpha: 1, duration: 3,
+			});
+	});
+
 	return (
 		<div >
-			<Div>
+			<Div >
 				<SEO title="Ultimate content checklist" />
-				<Section>
+				<Section id='fooo'>
 					<Section1 />
 					<Section2 />
 					<Section3 />
