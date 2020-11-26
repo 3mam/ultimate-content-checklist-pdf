@@ -30,7 +30,7 @@ const EbookCover = () => {
 	`);
 
 	return (
-		<Div>
+		<Div id='ebookCover'>
 			<Img fluid={data.cms.ebookCover.fluid} />
 		</Div>
 	);

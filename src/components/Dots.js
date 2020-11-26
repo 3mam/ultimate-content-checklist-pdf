@@ -27,12 +27,12 @@ const Div = styled.div`
 
 const selectGreenColorForDots = (dotNumber) => {
 	const dost = new Array(3).fill({});
-	return dost.map((v, i) => dotNumber === i ? (<Green key={i} />) : (<White key={i} />));
-}
+	return dost.map((v, i) => dotNumber === i ? (<Green id={`dot${i}`} key={i} />) : (<White id={`dot${i}`} key={i} />));
+};
 
 const Dots = ({ selectDot = 0 }) => {
 	return (
-		<Div>
+		<Div id='dots'>
 			{selectGreenColorForDots(selectDot)}
 		</Div>
 	);

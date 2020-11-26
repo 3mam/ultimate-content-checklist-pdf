@@ -5,7 +5,6 @@ import device from '../../utils/device';
 
 const Div = styled.div`
 	display: flex;
-
 	@media ${device.mobile} {
 		flex-direction: column;
 		align-items: stretch;
@@ -33,7 +32,6 @@ const Button = styled.button`
 const Span = styled.span`
   position: absolute;
   opacity: 0.6;
-  //top: 0;
   left: 20px;
 	bottom: 23px;
 	@media ${device.mobile} {
@@ -44,7 +42,6 @@ const Span = styled.span`
 `;
 
 const Input = styled.input`
-
   width: 310px;
   height: 60px;
   border-radius: 10px;
@@ -55,7 +52,6 @@ const Input = styled.input`
 	@media ${device.mobile} {
 		margin: 0 0 19px 0;
 		width: auto;
-
 	}
 
 	&:not(:placeholder-shown) + ${Span.toString()},
@@ -81,7 +77,7 @@ const Email = () => {
 	`);
 
 	return (
-		<Div>
+		<Div id='email'>
 			<Label>
 				<Input type="text" placeholder=" " />
 				<Span>{data.cms.emailPlaceholder}</Span>

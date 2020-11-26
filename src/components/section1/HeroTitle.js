@@ -25,7 +25,7 @@ const HeroTitle = () => {
 	`);
 
 	return (
-		<Div>
+		<Div id='heroTitle'>
 			{data.cms.heroTitle}
 		</Div>
 	);

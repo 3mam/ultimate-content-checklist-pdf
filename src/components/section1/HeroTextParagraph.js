@@ -25,7 +25,7 @@ const HeroTextParagraph = () => {
 	`);
 
 	return (
-		<Div>
+		<Div id='heroTextParagraph'>
 			{data.cms.heroTextParagraph}
 		</Div>
 	);
