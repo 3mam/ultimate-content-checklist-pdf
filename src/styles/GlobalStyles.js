@@ -17,28 +17,9 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-size: 2rem;
     scroll-behavior: smooth;
-  }
-
-  .gatsby-image-wrapper img[src*=base64\\,] {
-    image-rendering: -moz-crisp-edges;
-    image-rendering: pixelated;
-  }
-
-  body::-webkit-scrollbar {
-    width: 10px;
-  }
-  html {
-    scrollbar-width: thin;
-    scrollbar-color: var(--accent) var(--white);
-  }
-  body::-webkit-scrollbar-track {
-    background: var(--white);
-  }
-  body::-webkit-scrollbar-thumb {
-    background-color: var(--accent) ;
-    border-radius: 0px;
+    max-height: 100vh;
+    overflow: hidden;
   }
 
   img {
@@ -47,8 +28,14 @@ const GlobalStyles = createGlobalStyle`
 
   *, *+* {
     margin: 0;
+    padding: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }  
+  
+  .gatsby-image-wrapper img[src*=base64\\,] {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: pixelated;
   }
 `;
 

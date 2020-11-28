@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
+import { motion } from 'framer-motion';
 
-const Div = styled.div`
+const StyledParagraph = styled(motion.p)`
   font-family: Poppins;
   font-size: 18px;
   font-weight: normal;
@@ -12,23 +13,19 @@ const Div = styled.div`
   letter-spacing: normal;
   text-align: left;
   color: #ffffff;
-	margin-bottom: 44px;
+  margin-bottom: 44px;
 `;
 
 const HeroTextParagraph = () => {
-	const data = useStaticQuery(graphql`
-	{
-		cms:datoCmsLandingPageContent {
-			heroTextParagraph
-		}
-	}
-	`);
+  const data = useStaticQuery(graphql`
+    {
+      cms: datoCmsLandingPageContent {
+        heroTextParagraph
+      }
+    }
+  `);
 
-	return (
-		<Div id='heroTextParagraph'>
-			{data.cms.heroTextParagraph}
-		</Div>
-	);
+  return <StyledParagraph>{data.cms.heroTextParagraph}</StyledParagraph>;
 };
 
 export default HeroTextParagraph;

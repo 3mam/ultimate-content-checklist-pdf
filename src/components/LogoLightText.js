@@ -2,31 +2,36 @@ import React from 'react';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 
-const Div = styled.div`
-	margin: 0 0 0 -40px;
-`;
-
 const Img = styled.img`
-	width: 133px;
+  width: 133px;
   height: 14px;
+  position: ${({ position }) => position};
+  top: ${({ top }) => top};
+  left: ${({ left }) => left};
+  margin: ${({ margin }) => margin};
+  z-index: 1;
 `;
 
-const LogoLightText = () => {
-	const data = useStaticQuery(graphql`
-		{
-			cms:datoCmsLandingPageContent {
-				logoLightText {
-					url
-				}
-			}
-		}
-`);
+const LogoLightText = ({ position, top, left, margin }) => {
+  const data = useStaticQuery(graphql`
+    {
+      cms: datoCmsLandingPageContent {
+        logoLightText {
+          url
+        }
+      }
+    }
+  `);
 
-	return (
-		<Div id='logoLightText'>
-			<Img src={data.cms.logoLightText.url} />
-		</Div>
-	);
+  return (
+    <Img
+      position={position}
+      top={top}
+      left={left}
+      margin={margin}
+      src={data.cms.logoLightText.url}
+    />
+  );
 };
 
 export default LogoLightText;

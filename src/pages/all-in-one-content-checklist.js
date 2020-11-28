@@ -1,0 +1,75 @@
+import React, { useRef, useEffect } from 'react';
+import styled from 'styled-components';
+import LogoDarkText from '../components/LogoDarkText';
+import AllInTitle from '../components/section3/AllInTitle';
+import AllInParagraph from '../components/section3/AllInParagraph';
+import Ebook from '../components/section3/Ebook';
+import device from '../utils/device';
+import Layout from '../components/Layout';
+
+const Div = styled.div`
+  background-color: #ffffff;
+  padding: 0 35px 100px 180px;
+  scroll-snap-align: start;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  @media ${device.mobile} {
+    margin: 0 20px 0 0;
+    padding: 0;
+    width: auto;
+    height: auto;
+  }
+`;
+
+const Section = styled.section`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-basis: 1000px;
+  @media ${device.mobile} {
+    flex-basis: auto;
+    flex-direction: column;
+  }
+`;
+
+const SectionA = styled(Section)`
+  margin: 0 100px 0 0;
+  flex-direction: column;
+  @media ${device.mobile} {
+    margin: 0;
+  }
+`;
+
+const SectionB = styled(Section)`
+  align-items: center;
+`;
+
+const StyleDots = styled.div`
+  margin: 0 0 0 71px;
+  @media ${device.mobile} {
+    margin: 0;
+    visibility: hidden;
+  }
+`;
+
+const AllInPage = () => {
+  return (
+    <Layout>
+      <Div id="section3">
+        <Section>
+          <SectionA>
+            <LogoDarkText />
+            <AllInTitle />
+            <AllInParagraph />
+          </SectionA>
+          <SectionB>
+            <Ebook />
+          </SectionB>
+        </Section>
+      </Div>
+    </Layout>
+  );
+};
+
+export default AllInPage;

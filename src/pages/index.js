@@ -1,108 +1,73 @@
-import React, { useEffect } from 'react';
-import SEO from '../components/SEO';
+import React from 'react';
 import styled from 'styled-components';
-import Section1 from '../components/Section1'
-import Section2 from '../components/Section2'
-import Section3 from '../components/Section3'
-import device from '../utils/device'
-import gsap from "gsap";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Dots from '../components/Dots';
+import EbookCover from '../components/section1/EbookCover';
+import LogoLightText from '../components/LogoLightText';
+import HeroTitle from '../components/section1/HeroTitle';
+import HeroTextParagraph from '../components/section1/HeroTextParagraph';
+import Email from '../components/section1/Email';
+import device from '../utils/device';
+import Layout from '../components/Layout';
+import { motion } from 'framer-motion';
 
-gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
-
-const Div = styled.div`
-	position: absolute;
-  top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	margin: 0;
-	display: flex;
-	justify-content: center;
-  scroll-snap-type: mandatory;
-  scroll-snap-points-y: repeat(100vh);
-  scroll-snap-type: y mandatory;
-	@media ${device.mobile} {
-		scroll-snap-type: none;
-	}
+const Wrapper = styled.section`
+  background-color: #171717;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
-const Section = styled.section`
-	flex-direction: column;
-	@media ${device.mobile} {
-		flex-basis: auto;
-		align-items: stretch;
-		justify-content: stretch;
-	}
+const ContentWrapper = styled.div`
+  max-width: 1366px;
+  margin: 0 150px 25px 135px;
+  position: relative;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 50px;
+`;
+
+const SectionB = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 40px;
+  h1 {
+    max-width: 404px;
+  }
+  p {
+    max-width: 506px;
+  }
+`;
+
+const SectionC = styled(Wrapper)`
+  flex-direction: row;
+  align-items: center;
+  @media ${device.mobile} {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+  }
 `;
 
 const HomePage = () => {
-	useEffect(() => {
-		const heroTitle = document.getElementById('heroTitle');
-		const heroTextParagraph = document.getElementById('heroTextParagraph');
-		const email = document.getElementById('email');
-		const ebookCover = document.getElementById('ebookCover');
-		const dots = document.getElementById('dots');
-		const [dot1, dot2, dot3] = dots.children;
-		const [input, button] = email.children;
-
-		const whatSectionTitle = document.getElementById('whatSectionTitle');
-		const section2 = document.getElementById('section2');
-
-		const t1 = gsap.timeline({ defaults: {} });
-		const t2 = gsap.timeline({ defaults: {} });
-		const t3 = gsap.timeline({ defaults: {} });
-		const t4 = gsap.timeline({ defaults: {} });
-		const t5 = gsap.timeline({
-			defaults: {}, scrollTrigger: {
-				trigger: section2, start: 'top 20%'
-			}
-		});
-
-		gsap.set([
-			heroTitle,
-			heroTextParagraph,
-			ebookCover,
-			dot1, dot2, dot3,
-			input, button,
-			whatSectionTitle,
-		], { autoAlpha: 0 });
-
-		t1.delay(1.1)
-			.fromTo(heroTitle, { x: '-=120' }, { duration: 0.6, x: '+=120', autoAlpha: 1 })
-			.fromTo(heroTextParagraph, { x: '-=120' }, { duration: 0.6, x: '+=120', autoAlpha: 1 }, '-=0.3')
-		t2.delay(1.5)
-			.fromTo(ebookCover, {}, { duration: 3, autoAlpha: 1 });
-		t3.delay(1.1)
-			.fromTo(dot1, { x: '+=20' }, { duration: 0.4, x: '-=20', autoAlpha: 1 })
-			.fromTo(dot2, { x: '+=20' }, { duration: 0.4, x: '-=20', autoAlpha: 1 }, '-=0.2')
-			.fromTo(dot3, { x: '+=20' }, { duration: 0.4, x: '-=20', autoAlpha: 1 }, '-=0.2');
-		t4.delay(1.5)
-			.fromTo(input, { y: '+=20' }, { duration: 1, y: '-=20', autoAlpha: 1 })
-			.fromTo(button, { y: '+=20' }, { duration: 1, y: '-=20', autoAlpha: 1 }, '-=0.7');
-
-
-		t5.delay(1.5)
-			.fromTo(whatSectionTitle, { y: '-=80' }, {
-				y: '+=80', autoAlpha: 1, duration: 3,
-			});
-	});
-
-	return (
-		<div >
-			<Div >
-				<SEO title="Ultimate content checklist" />
-				<Section id='fooo'>
-					<Dots selectDot={0} />
-					<Section1 />
-					<Section2 />
-					<Section3 />
-				</Section>
-			</Div>
-		</div>
-	);
+  return (
+    <Layout>
+      <Wrapper>
+        <ContentWrapper>
+          <LogoLightText position="absolute" top="48px" left="-38px" />
+          <SectionB>
+            <HeroTitle />
+            <HeroTextParagraph />
+            <Email />
+          </SectionB>
+          <SectionC>
+            <EbookCover />
+          </SectionC>
+        </ContentWrapper>
+      </Wrapper>
+    </Layout>
+  );
 };
 
 export default HomePage;
