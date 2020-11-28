@@ -7,6 +7,14 @@ import device from '../../utils/device';
 const Div = styled.div`
   width: 100%;
   height: auto;
+  display: flex;
+  align-items: center;
+  margin-top: 5%;
+  .gatsby-image-wrapper {
+    width: 100%;
+    height: 100%;
+  }
+
   @media ${device.mobile} {
     justify-content: center;
     align-items: center;

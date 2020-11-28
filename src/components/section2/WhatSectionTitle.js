@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 import device from '../../utils/device';
 
-const Div = styled.div`
+const StyledHeader = styled.h2`
   margin: 51px 0 41px 0;
   font-family: Poppins;
   font-size: 35px;
@@ -14,25 +14,25 @@ const Div = styled.div`
   letter-spacing: normal;
   text-align: left;
   color: #171717;
-	@media ${device.mobile} {
-		margin: 0 0 0 20px;
-	}
+  @media ${device.mobile} {
+    margin: 0 0 0 20px;
+  }
 `;
 
 const WhatSectionTitle = () => {
-	const data = useStaticQuery(graphql`
-		{
-			cms:datoCmsLandingPageContent {
-				whatSectionTitle
-			}
-		}
-	`);
+  const data = useStaticQuery(graphql`
+    {
+      cms: datoCmsLandingPageContent {
+        whatSectionTitle
+      }
+    }
+  `);
 
-	return (
-		<Div id='whatSectionTitle'>
-			{data.cms.whatSectionTitle}
-		</Div>
-	);
+  return (
+    <StyledHeader id="whatSectionTitle">
+      {data.cms.whatSectionTitle}
+    </StyledHeader>
+  );
 };
 
 export default WhatSectionTitle;

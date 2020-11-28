@@ -1,31 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import EbookCover from '../components/section1/EbookCover';
-import LogoLightText from '../components/LogoLightText';
+import LogoLight from '../components/Logo';
 import HeroTitle from '../components/section1/HeroTitle';
 import HeroTextParagraph from '../components/section1/HeroTextParagraph';
 import Email from '../components/section1/Email';
 import device from '../utils/device';
 import Layout from '../components/Layout';
 import { motion } from 'framer-motion';
-
-const Wrapper = styled.section`
-  background-color: #171717;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const ContentWrapper = styled.div`
-  max-width: 1366px;
-  margin: 0 150px 25px 135px;
-  position: relative;
-  height: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 50px;
-`;
+import { Wrapper } from '../components/Wrapper';
+import { ContentWrapper } from '../components/ContentWrapper';
+import Logo from '../components/Logo';
 
 const SectionB = styled(motion.div)`
   display: flex;
@@ -40,30 +25,18 @@ const SectionB = styled(motion.div)`
   }
 `;
 
-const SectionC = styled(Wrapper)`
-  flex-direction: row;
-  align-items: center;
-  @media ${device.mobile} {
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-  }
-`;
-
 const HomePage = () => {
   return (
     <Layout>
       <Wrapper>
         <ContentWrapper>
-          <LogoLightText position="absolute" top="48px" left="-38px" />
+          <Logo position="absolute" top="48px" left="-32px" dark={false} />
           <SectionB>
             <HeroTitle />
             <HeroTextParagraph />
             <Email />
           </SectionB>
-          <SectionC>
-            <EbookCover />
-          </SectionC>
+          <EbookCover />
         </ContentWrapper>
       </Wrapper>
     </Layout>

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useLocation } from '@reach/router';
 import Navigation from './Navigation';
@@ -10,11 +10,41 @@ const StyledMain = styled(motion.main)`
   height: 100vh;
 `;
 const Layout = ({ children }) => {
+  const pathname = useLocation().pathname;
+  const [actualBg, setActualBg] = useState('dark');
+
+  const links = [
+    {
+      path: '/',
+      text: 'Checklist',
+      bg: 'dark',
+    },
+    {
+      path: '/what-can-you-learn-from-ebook',
+      text: 'Learn',
+      bg: 'light',
+    },
+    {
+      path: '/all-in-one-content-checklist',
+      text: 'Workflow',
+      bg: 'light',
+    },
+  ];
+
+  useEffect(() => {
+    const index = links.findIndex((link) => link.path === pathname);
+    setActualBg(links[index].bg);
+  }, [pathname]);
   const location = useLocation();
   return (
     <>
       <GlobalStyles />
-      <Navigation />
+      <Navigation
+        pathname={pathname}
+        actualBg={actualBg}
+        setActualBg={setActualBg}
+        links={links}
+      />
       <StyledMain
         key={location.pathname}
         initial="pageInitial"

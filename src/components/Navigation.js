@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { motion } from 'framer-motion';
 import { useLocation } from '@reach/router';
+import Logo from './Logo';
 
 const DotsStyles = styled.div`
   position: fixed;
@@ -68,52 +69,34 @@ const NavigationListItem = styled(motion.li)`
   transform: translateX(16px);
 `;
 
-const Navigation = () => {
-  // const [currentDot, setCurrentDot] = useState(0);
-  // const [navLinks, setNavigationList] = useState[
-  //   ['/', 'what-can-you-learn-from-ebook', '/all-in-one-content-checklist']
-  // ];
-  const pathname = useLocation().pathname;
-  const [actualBg, setActualBg] = useState('dark');
-  const links = [
-    {
-      path: '/',
-      text: 'Checklist',
-      bg: 'dark',
-    },
-    {
-      path: '/what-can-you-learn-from-ebook',
-      text: 'Learn',
-      bg: 'light',
-    },
-    {
-      path: '/all-in-one-content-checklist',
-      text: 'Workflow',
-      bg: 'light',
-    },
-  ];
-  useEffect(() => {
-    const index = links.findIndex((link) => link.path === pathname);
-    setActualBg(links[index].bg);
-  }, [pathname]);
+const LogoWrapper = styled(motion.div)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0 auto;
+`;
+
+const Navigation = ({ links, pathname, actualBg, setActualBg }) => {
   return (
-    <DotsStyles>
-      <ul>
-        {links.map((link) => (
-          <LinksWrapper bg={actualBg}>
-            <Link className="dot" activeClassName="active" to={link.path}>
-              <NavigationListItem
-                active={pathname === link.path}
-                data-text={link.text}
-              />
-            </Link>
-            <Link className="text" activeClassName="active" to={link.path}>
-              <span>{link.text}</span>
-            </Link>
-          </LinksWrapper>
-        ))}
-      </ul>
-    </DotsStyles>
+    <>
+      <DotsStyles>
+        <ul>
+          {links.map((link) => (
+            <LinksWrapper bg={actualBg}>
+              <Link className="dot" activeClassName="active" to={link.path}>
+                <NavigationListItem
+                  active={pathname === link.path}
+                  data-text={link.text}
+                />
+              </Link>
+              <Link className="text" activeClassName="active" to={link.path}>
+                <span>{link.text}</span>
+              </Link>
+            </LinksWrapper>
+          ))}
+        </ul>
+      </DotsStyles>
+    </>
   );
 };
 

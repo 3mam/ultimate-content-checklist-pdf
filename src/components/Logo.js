@@ -12,11 +12,14 @@ const Img = styled.img`
   z-index: 1;
 `;
 
-const LogoLightText = ({ position, top, left, margin }) => {
+const Logo = ({ position, top, left, margin, dark }) => {
   const data = useStaticQuery(graphql`
     {
       cms: datoCmsLandingPageContent {
         logoLightText {
+          url
+        }
+        logoDarkText {
           url
         }
       }
@@ -29,9 +32,9 @@ const LogoLightText = ({ position, top, left, margin }) => {
       top={top}
       left={left}
       margin={margin}
-      src={data.cms.logoLightText.url}
+      src={dark ? data.cms.logoDarkText.url : data.cms.logoLightText.url}
     />
   );
 };
 
-export default LogoLightText;
+export default Logo;

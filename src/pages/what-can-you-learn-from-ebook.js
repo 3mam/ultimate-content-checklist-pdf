@@ -1,33 +1,20 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
-import LogoDarkText from '../components/LogoDarkText';
+import LogoDark from '../components/Logo';
 import SocialMediaLinks from '../components/section2/SocialMediaLinks';
 import WhatSectionParagraph from '../components/section2/WhatSectionParagraph';
 import WhatSectionTitle from '../components/section2/WhatSectionTitle';
 import Grid from '../components/section2/Grid';
 import device from '../utils/device';
 import Layout from '../components/Layout';
-
-const Div = styled.div`
-  background-color: #ffffff;
-  padding: 0 0 100px 180px;
-  scroll-snap-align: start;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  @media ${device.mobile} {
-    margin: 0 0 50px 0;
-    padding: 0 20px 0 0;
-    width: auto;
-    height: auto;
-  }
-`;
+import { Wrapper } from '../components/Wrapper';
+import { ContentWrapper } from '../components/ContentWrapper';
+import Logo from '../components/Logo';
 
 const Section = styled.section`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  flex-basis: 1000px;
   @media ${device.mobile} {
     flex-basis: auto;
   }
@@ -35,42 +22,36 @@ const Section = styled.section`
 
 const SectionA = styled(Section)`
   flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 10%;
+  @media only screen and (min-width: 1440px) {
+    justify-content: center;
+    margin-bottom: 10%;
+    margin-top: 0;
+  }
   @media ${device.mobile} {
     flex-basis: auto;
-  }
-`;
-const SectionB = styled(Section)`
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const OnMobile = styled(Section)`
-  justify-content: flex-start;
-  align-items: center;
-  @media ${device.mobile} {
-    visibility: hidden;
-    position: absolute;
-    //margin: 0 -460px -100px 0;
-    padding: 0;
   }
 `;
 
 const LearnPage = () => {
   return (
     <Layout>
-      <Div id="section2">
-        <Section>
+      <Wrapper bg="light">
+        <ContentWrapper
+          gridGap="50px"
+          margin="0 0 0 135px"
+          gridColumns="3fr 2fr"
+        >
+          <Logo position="absolute" top="48px" left="-32px" dark />
           <SectionA>
-            <LogoDarkText />
             <WhatSectionTitle />
             <WhatSectionParagraph />
             <SocialMediaLinks />
           </SectionA>
-          <SectionB>
-            <Grid />
-          </SectionB>
-        </Section>
-      </Div>
+          <Grid />
+        </ContentWrapper>
+      </Wrapper>
     </Layout>
   );
 };

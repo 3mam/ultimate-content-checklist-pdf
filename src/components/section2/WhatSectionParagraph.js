@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
-import device from '../../utils/device'
+import device from '../../utils/device';
 
-const Div = styled.div`
+const StyledParagraph = styled.p`
   margin: 0 0 49px 0;
   font-family: Poppins;
   font-size: 18px;
@@ -14,25 +14,29 @@ const Div = styled.div`
   letter-spacing: normal;
   text-align: left;
   color: #585858;
-	@media ${device.mobile} {
-		margin: 0 0 0 20px;
-	}
+  max-width: 754px;
+  @media ${device.mobile} {
+    margin: 0 0 0 20px;
+  }
 `;
 
 const WhatSectionParagraph = () => {
-	const data = useStaticQuery(graphql`
-		{
-			cms:datoCmsLandingPageContent {
-				whatSectionParagraph
-			}
-		}
-	`);
+  const data = useStaticQuery(graphql`
+    {
+      cms: datoCmsLandingPageContent {
+        whatSectionParagraph
+      }
+    }
+  `);
 
-	const htmlString = { __html: data.cms.whatSectionParagraph }
+  const htmlString = { __html: data.cms.whatSectionParagraph };
 
-	return (
-		<Div id='whatSectionParagraph' dangerouslySetInnerHTML={htmlString} />
-	);
+  return (
+    <StyledParagraph
+      id="whatSectionParagraph"
+      dangerouslySetInnerHTML={htmlString}
+    />
+  );
 };
 
 export default WhatSectionParagraph;

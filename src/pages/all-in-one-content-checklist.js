@@ -1,11 +1,14 @@
 import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import LogoDarkText from '../components/LogoDarkText';
+import LogoDark from '../components/Logo';
 import AllInTitle from '../components/section3/AllInTitle';
 import AllInParagraph from '../components/section3/AllInParagraph';
 import Ebook from '../components/section3/Ebook';
 import device from '../utils/device';
 import Layout from '../components/Layout';
+import { Wrapper } from '../components/Wrapper';
+import { ContentWrapper } from '../components/ContentWrapper';
+import Logo from '../components/Logo';
 
 const Div = styled.div`
   background-color: #ffffff;
@@ -45,29 +48,25 @@ const SectionB = styled(Section)`
   align-items: center;
 `;
 
-const StyleDots = styled.div`
-  margin: 0 0 0 71px;
-  @media ${device.mobile} {
-    margin: 0;
-    visibility: hidden;
-  }
-`;
-
 const AllInPage = () => {
   return (
     <Layout>
-      <Div id="section3">
-        <Section>
+      <Wrapper bg="light">
+        <ContentWrapper
+          gridGap="90px"
+          margin="90px 120px 90px 135px"
+          gridColumns="3fr 2fr"
+        >
+          <Logo position="absolute" top="48px" left="-32px" dark />
           <SectionA>
-            <LogoDarkText />
             <AllInTitle />
             <AllInParagraph />
           </SectionA>
           <SectionB>
             <Ebook />
           </SectionB>
-        </Section>
-      </Div>
+        </ContentWrapper>
+      </Wrapper>
     </Layout>
   );
 };
