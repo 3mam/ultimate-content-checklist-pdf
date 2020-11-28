@@ -8,7 +8,6 @@ import device from '../utils/device';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Dots from '../components/Dots';
 
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 

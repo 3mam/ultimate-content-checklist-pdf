@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Dots from './Dots';
-
 import styled from 'styled-components';
-import device from '../utils/device';
 import { Link } from 'gatsby';
 import { motion } from 'framer-motion';
 import { useLocation } from '@reach/router';
