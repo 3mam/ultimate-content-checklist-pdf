@@ -8,11 +8,14 @@ const Img = styled.img`
   position: ${({ position }) => position};
   top: ${({ top }) => top};
   left: ${({ left }) => left};
+  @media only screen and (max-width: 1194px) {
+    left: ${({ left }) => left && `${+left.split('px')[0] - 50}px`};
+  }
   margin: ${({ margin }) => margin};
   z-index: 1;
 `;
 
-const Logo = ({ position, top, left, margin, dark }) => {
+const Logo = ({ position, top, left, learnLeft1515, margin, dark }) => {
   const data = useStaticQuery(graphql`
     {
       cms: datoCmsLandingPageContent {

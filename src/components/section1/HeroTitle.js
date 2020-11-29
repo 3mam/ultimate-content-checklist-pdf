@@ -15,6 +15,9 @@ const StyledHeader = styled(motion.h1)`
   color: #ffffff;
   margin-bottom: 26px;
   max-width: 404px;
+  @media only screen and (max-width: 1194px) {
+    font-size: 50px;
+  }
 `;
 
 const HeroTitle = () => {

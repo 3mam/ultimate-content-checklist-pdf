@@ -9,65 +9,78 @@ import Layout from '../components/Layout';
 import { Wrapper } from '../components/Wrapper';
 import { ContentWrapper } from '../components/ContentWrapper';
 import Logo from '../components/Logo';
-
-const Div = styled.div`
-  background-color: #ffffff;
-  padding: 0 35px 100px 180px;
-  scroll-snap-align: start;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  @media ${device.mobile} {
-    margin: 0 20px 0 0;
-    padding: 0;
-    width: auto;
-    height: auto;
-  }
-`;
+import useCurrentWidth from '../hooks/useCurrentWidth';
+import { Link } from 'gatsby';
 
 const Section = styled.section`
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  flex-basis: 1000px;
   @media ${device.mobile} {
-    flex-basis: auto;
     flex-direction: column;
   }
 `;
 
-const SectionA = styled(Section)`
-  margin: 0 100px 0 0;
+export const SectionTitle = styled(Section)`
   flex-direction: column;
   @media ${device.mobile} {
     margin: 0;
   }
 `;
 
-const SectionB = styled(Section)`
+export const SectionEbook = styled(Section)`
   align-items: center;
 `;
 
+export const Flex = styled.div`
+  height: 100vh;
+  max-width: 100vw;
+  padding: 0 20px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  background-color: #171717;
+
+  a {
+    font-size: 22px;
+    line-height: 1.3em;
+    color: #00ef8b;
+    text-decoration: underline;
+    font-family: 'Poppins';
+  }
+`;
+
 const AllInPage = () => {
+  let width = useCurrentWidth();
   return (
-    <Layout>
-      <Wrapper bg="light">
-        <ContentWrapper
-          gridGap="90px"
-          margin="90px 120px 90px 135px"
-          gridColumns="3fr 2fr"
-        >
-          <Logo position="absolute" top="48px" left="-32px" dark />
-          <SectionA>
-            <AllInTitle />
-            <AllInParagraph />
-          </SectionA>
-          <SectionB>
-            <Ebook />
-          </SectionB>
-        </ContentWrapper>
-      </Wrapper>
-    </Layout>
+    <>
+      {width > 990 ? (
+        <Layout>
+          <Wrapper bg="light">
+            <ContentWrapper
+              gridGap="50px"
+              padding="90px 120px 90px 135px"
+              gridColumns="3fr 2fr"
+            >
+              <Logo position="absolute" top="138px" left="95px" dark />
+              <SectionTitle>
+                <AllInTitle />
+                <AllInParagraph />
+              </SectionTitle>
+              <SectionEbook>
+                <Ebook />
+              </SectionEbook>
+            </ContentWrapper>
+          </Wrapper>
+        </Layout>
+      ) : (
+        <Flex>
+          Better don't mess around here
+          <Link to="/">&larr; The Ultimate Content Checklist</Link>
+        </Flex>
+      )}
+    </>
   );
 };
 

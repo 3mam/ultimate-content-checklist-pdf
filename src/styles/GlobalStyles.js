@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
   :root {
@@ -18,8 +18,12 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     scroll-behavior: smooth;
-    max-height: 100vh;
-    overflow: hidden;
+    ${({ desktop }) =>
+      desktop &&
+      css`
+        max-height: 100vh;
+        overflow: hidden;
+      `}
   }
 
   img {

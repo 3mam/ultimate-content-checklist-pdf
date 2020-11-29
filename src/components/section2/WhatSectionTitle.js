@@ -14,6 +14,9 @@ const StyledHeader = styled.h2`
   letter-spacing: normal;
   text-align: left;
   color: #171717;
+  @media only screen and (max-width: 1409px) {
+    font-size: 32px;
+  }
   @media ${device.mobile} {
     margin: 0 0 0 20px;
   }

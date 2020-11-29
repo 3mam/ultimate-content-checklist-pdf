@@ -12,7 +12,9 @@ const Div = styled.div`
   margin-top: 5%;
   .gatsby-image-wrapper {
     width: 100%;
-    height: 100%;
+    @media only screen and (max-width: 990px) {
+      max-width: 500px;
+    }
   }
 
   @media ${device.mobile} {

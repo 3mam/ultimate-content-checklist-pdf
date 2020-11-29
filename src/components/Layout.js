@@ -1,13 +1,18 @@
 import { motion } from 'framer-motion';
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { useLocation } from '@reach/router';
 import Navigation from './Navigation';
 import GlobalStyles from '../styles/GlobalStyles';
+import useCurrentWidth from '../hooks/useCurrentWidth';
 
 const StyledMain = styled(motion.main)`
-  max-height: 100vh;
-  height: 100vh;
+  ${({ desktop }) =>
+    desktop &&
+    css`
+      max-height: 100vh;
+      height: 100vh;
+    `}
 `;
 const Layout = ({ children }) => {
   const pathname = useLocation().pathname;
@@ -36,9 +41,10 @@ const Layout = ({ children }) => {
     setActualBg(links[index].bg);
   }, [pathname]);
   const location = useLocation();
+  let currentWidth = useCurrentWidth();
   return (
     <>
-      <GlobalStyles />
+      <GlobalStyles desktop={currentWidth > 990} />
       <Navigation
         pathname={pathname}
         actualBg={actualBg}
@@ -46,6 +52,7 @@ const Layout = ({ children }) => {
         links={links}
       />
       <StyledMain
+        desktop={currentWidth > 990}
         key={location.pathname}
         initial="pageInitial"
         animate="pageAnimate"

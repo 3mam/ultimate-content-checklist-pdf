@@ -14,25 +14,24 @@ const Div = styled.div`
   letter-spacing: normal;
   text-align: left;
   color: #171717;
-	@media ${device.mobile} {
-		margin: 0 0 0 20px;
-	}
+  @media ${device.mobile} {
+    margin: 0 0 0 20px;
+  }
+  @media only screen and (max-width: 1194px) {
+    font-size: 50px;
+  }
 `;
 
 const AllInTitle = () => {
-	const data = useStaticQuery(graphql`
-		{
-			cms:datoCmsLandingPageContent {
-				allInTitle
-			}
-		}
-`);
+  const data = useStaticQuery(graphql`
+    {
+      cms: datoCmsLandingPageContent {
+        allInTitle
+      }
+    }
+  `);
 
-	return (
-		<Div id='allInTitle'>
-			{data.cms.allInTitle}
-		</Div>
-	);
+  return <Div id="allInTitle">{data.cms.allInTitle}</Div>;
 };
 
 export default AllInTitle;
