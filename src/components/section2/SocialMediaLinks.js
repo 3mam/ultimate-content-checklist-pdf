@@ -26,7 +26,7 @@ const Icon = styled(motion.a)`
 
   &:hover {
     background-color: #00ef8b;
-    transform: scale(1.05);
+    transform: scale(1.05) translateY(-4px);
   }
 `;
 

@@ -9,6 +9,7 @@ const Div = styled.div`
     flex-direction: column;
     align-items: stretch;
     justify-content: stretch;
+    max-width: 505px;
   }
 `;
 
@@ -16,13 +17,13 @@ const Label = styled.label`
   display: flex;
   flex-direction: column;
   position: relative;
+  font-size: 16px;
 `;
 
 const Button = styled.button`
   width: 135px;
   height: 100%;
-  border-radius: 10px;
-  background-color: #25eb98;
+
   @media only screen and (max-width: 990px) {
     width: auto;
     height: 60px;
@@ -31,24 +32,37 @@ const Button = styled.button`
 
 const Span = styled.span`
   position: absolute;
-  opacity: 0.6;
+  opacity: 0;
   left: 20px;
   bottom: 23px;
+  font-family: 'Poppins';
+  color: white;
   @media only screen and (max-width: 990px) {
     bottom: 41px;
   }
   cursor: text;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
 `;
 
 const Input = styled.input`
   width: 310px;
   height: 60px;
   border-radius: 10px;
+  border: none;
   background-color: #ffffff;
-  margin: 0 14px 0 0;
-  padding: 0 0 0 20px;
-  font-size: 1.5em;
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  line-height: 1.47em;
+  text-align: center;
+  font-family: 'Poppins';
+  color: #171717;
+  transition: box-shadow 0.35s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 3pt 2pt #00ef8b;
+  }
   @media only screen and (max-width: 990px) {
     margin: 0 0 19px 0;
     width: auto;
@@ -58,7 +72,7 @@ const Input = styled.input`
     opacity: 1;
     transform: translate(-10px, -45px);
     font-size: 0.8em;
-    color: white;
+    color: #00ef8b;
     cursor: default;
   }
 `;
@@ -78,8 +92,8 @@ const Email = () => {
   return (
     <Div id="email">
       <Label>
-        <Input type="text" placeholder=" " />
-        <Span>{data.cms.emailPlaceholder}</Span>
+        <Input type="text" placeholder={data.cms.emailPlaceholder} />
+        <Span>email</Span>
       </Label>
       <Button>{data.cms.emailButtonText}</Button>
     </Div>

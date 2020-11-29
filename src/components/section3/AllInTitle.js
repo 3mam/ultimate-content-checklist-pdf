@@ -18,7 +18,7 @@ const Div = styled.div`
     margin: 0 0 0 20px;
   }
   @media only screen and (max-width: 1194px) {
-    font-size: 50px;
+    font-size: 47px;
   }
 `;
 

@@ -11,6 +11,10 @@ const Img = styled.img`
   @media only screen and (max-width: 1194px) {
     left: ${({ left }) => left && `${+left.split('px')[0] - 50}px`};
   }
+  @media only screen and (max-width: 990px) {
+    top: 32px;
+    left: 8px;
+  }
   margin: ${({ margin }) => margin};
   z-index: 1;
 `;

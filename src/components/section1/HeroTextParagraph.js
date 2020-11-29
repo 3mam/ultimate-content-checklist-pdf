@@ -14,6 +14,10 @@ const StyledParagraph = styled(motion.p)`
   text-align: left;
   color: #ffffff;
   margin-bottom: 44px;
+  @media only screen and (max-width: 990px) {
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
 `;
 
 const HeroTextParagraph = () => {

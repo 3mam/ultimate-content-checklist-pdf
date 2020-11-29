@@ -14,10 +14,12 @@ const GlobalStyles = createGlobalStyle`
   
   html {
     font-size: 10px;
+    font-family: "Poppins";
   }
 
   body {
     scroll-behavior: smooth;
+    font-family: "Poppins";
     ${({ desktop }) =>
       desktop &&
       css`
@@ -40,6 +42,21 @@ const GlobalStyles = createGlobalStyle`
   .gatsby-image-wrapper img[src*=base64\\,] {
     image-rendering: -moz-crisp-edges;
     image-rendering: pixelated;
+  }
+
+  button {
+  border-radius: 10px;
+  background-color: #25eb98;
+  font-size: 18px;
+  line-height: 1.47;
+    font-family: "Poppins";
+  border: none;
+  transition: box-shadow 0.35s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    &:focus {
+      outline: none;
+    box-shadow: 0 0 3pt 2pt #fff;
+    }
   }
 `;
 
