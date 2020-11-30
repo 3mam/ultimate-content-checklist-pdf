@@ -33,6 +33,10 @@ const SectionB = styled(motion.div)`
   p {
     max-width: 506px;
   }
+
+  @media only screen and (max-width: 990px) {
+    margin-bottom: 15px;
+  }
 `;
 
 const HomePage = () => {
@@ -58,14 +62,14 @@ const HomePage = () => {
               padding="90px 120px 90px 135px"
               paddingRightZero
               gridColumns="3fr 2fr"
+              oneRow
             >
-              <Logo position="absolute" top="138px" left="95px" dark />
               <SectionA>
                 <WhatSectionTitle />
                 <WhatSectionParagraph />
-                <SocialMediaLinks />
+                {width > 990 && <SocialMediaLinks />}
               </SectionA>
-              <Grid />
+              {width > 990 && <Grid />}
             </ContentWrapper>
           </Wrapper>
           <Wrapper bg="light">
@@ -73,8 +77,8 @@ const HomePage = () => {
               gridGap="50px"
               padding="90px 120px 90px 135px"
               gridColumns="3fr 2fr"
+              allIn
             >
-              <Logo position="absolute" top="138px" left="95px" dark />
               <SectionTitle>
                 <AllInTitle />
                 <AllInParagraph />

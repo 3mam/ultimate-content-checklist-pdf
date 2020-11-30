@@ -14,11 +14,12 @@ const Div = styled.div`
   letter-spacing: normal;
   text-align: left;
   color: #171717;
-  @media ${device.mobile} {
-    margin: 0 0 0 20px;
-  }
   @media only screen and (max-width: 1194px) {
     font-size: 47px;
+  }
+  @media only screen and (max-width: 990px) {
+    font-size: 26px;
+    margin: 0;
   }
 `;
 

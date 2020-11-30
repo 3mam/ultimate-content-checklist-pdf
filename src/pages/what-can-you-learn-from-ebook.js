@@ -18,7 +18,7 @@ const Section = styled.section`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  @media ${device.mobile} {
+  @media only screen and (max-width: 990px) {
     flex-basis: auto;
   }
 `;
@@ -31,11 +31,9 @@ export const SectionA = styled(Section)`
     margin-bottom: 10%;
     margin-top: 0;
   }
-  /* @media only screen and (max-width: 1515px) {
-    padding-left: 120px;
-  } */
-  @media ${device.mobile} {
+  @media only screen and (max-width: 990px) {
     flex-basis: auto;
+    padding: 40px 0 0;
   }
 `;
 
@@ -56,9 +54,9 @@ const LearnPage = () => {
               <SectionA>
                 <WhatSectionTitle />
                 <WhatSectionParagraph />
-                <SocialMediaLinks />
+                {width > 990 && <SocialMediaLinks />}
               </SectionA>
-              <Grid />
+              {width > 990 && <Grid />}
             </ContentWrapper>
           </Wrapper>
         </Layout>

@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 const Div = styled(motion.div)`
   display: flex;
   flex-direction: row;
-  @media ${device.mobile} {
+  @media only screen and (max-width: 990px) {
     display: none;
   }
 `;

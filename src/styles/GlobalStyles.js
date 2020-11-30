@@ -55,7 +55,7 @@ const GlobalStyles = createGlobalStyle`
 
     &:focus {
       outline: none;
-    box-shadow: 0 0 3pt 2pt #fff;
+      box-shadow: 0 0 1pt 2pt #fff;
     }
   }
 `;

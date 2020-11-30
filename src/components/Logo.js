@@ -13,7 +13,7 @@ const Img = styled.img`
   }
   @media only screen and (max-width: 990px) {
     top: 32px;
-    left: 8px;
+    left: 28px;
   }
   margin: ${({ margin }) => margin};
   z-index: 1;

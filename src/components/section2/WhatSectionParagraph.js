@@ -15,8 +15,9 @@ const StyledParagraph = styled.p`
   text-align: left;
   color: #585858;
   max-width: 754px;
-  @media ${device.mobile} {
-    margin: 0 0 0 20px;
+  @media only screen and (max-width: 990px) {
+    margin: 16px 0 56px;
+    font-size: 16px;
   }
 `;
 

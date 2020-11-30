@@ -15,20 +15,23 @@ import { Link } from 'gatsby';
 const Section = styled.section`
   display: flex;
   justify-content: center;
-  @media ${device.mobile} {
+  @media only screen and (max-width: 990px) {
     flex-direction: column;
   }
 `;
 
 export const SectionTitle = styled(Section)`
   flex-direction: column;
-  @media ${device.mobile} {
+  @media only screen and (max-width: 990px) {
     margin: 0;
   }
 `;
 
 export const SectionEbook = styled(Section)`
   align-items: center;
+  @media only screen and (max-width: 990px) {
+    margin: 56px 30px 50px;
+  }
 `;
 
 export const Flex = styled.div`

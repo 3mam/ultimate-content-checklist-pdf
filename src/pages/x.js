@@ -23,14 +23,14 @@ const Div = styled.div`
   scroll-snap-type: mandatory;
   scroll-snap-points-y: repeat(100vh);
   scroll-snap-type: y mandatory;
-  @media ${device.mobile} {
+  @media only screen and (max-width: 990px) {
     scroll-snap-type: none;
   }
 `;
 
 const Section = styled.section`
   flex-direction: column;
-  @media ${device.mobile} {
+  @media only screen and (max-width: 990px) {
     flex-basis: auto;
     align-items: stretch;
     justify-content: stretch;

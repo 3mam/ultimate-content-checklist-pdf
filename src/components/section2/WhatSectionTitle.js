@@ -17,8 +17,9 @@ const StyledHeader = styled.h2`
   @media only screen and (max-width: 1409px) {
     font-size: 32px;
   }
-  @media ${device.mobile} {
-    margin: 0 0 0 20px;
+  @media only screen and (max-width: 990px) {
+    font-size: 26px;
+    margin: 0;
   }
 `;
 

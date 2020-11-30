@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 import device from '../../utils/device';
+import { motion } from 'framer-motion';
 
-const Div = styled.div`
+const Form = styled.form`
   display: flex;
   @media only screen and (max-width: 990px) {
     flex-direction: column;
@@ -17,16 +18,26 @@ const Label = styled.label`
   display: flex;
   flex-direction: column;
   position: relative;
-  font-size: 16px;
+  font-size: 14px;
 `;
 
-const Button = styled.button`
+const Button = styled(motion.button)`
   width: 135px;
   height: 100%;
+  margin-left: 14px;
+  font-size: 16px;
+  line-height: 1.47em;
+  cursor: pointer;
+  transition: box-shadow 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  &:hover:not(:focus) {
+    box-shadow: 0 0 0pt 1pt #00ef8b;
+  }
 
   @media only screen and (max-width: 990px) {
     width: auto;
     height: 60px;
+    margin-left: 0;
   }
 `;
 
@@ -52,7 +63,7 @@ const Input = styled.input`
   background-color: #ffffff;
   margin: 0;
   padding: 0;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.47em;
   text-align: center;
   font-family: 'Poppins';
@@ -61,7 +72,10 @@ const Input = styled.input`
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 3pt 2pt #00ef8b;
+    box-shadow: 0 0 1pt 2pt #00ef8b;
+  }
+  &:hover:not(:focus) {
+    box-shadow: 0 0 0pt 1pt #00ef8b;
   }
   @media only screen and (max-width: 990px) {
     margin: 0 0 19px 0;
@@ -89,14 +103,21 @@ const Email = () => {
     }
   `);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(e.target);
+  };
+
   return (
-    <Div id="email">
+    <Form id="email" onSubmit={handleSubmit}>
       <Label>
         <Input type="text" placeholder={data.cms.emailPlaceholder} />
         <Span>email</Span>
       </Label>
-      <Button>{data.cms.emailButtonText}</Button>
-    </Div>
+      <Button whileTap={{ scale: 0.9 }} type="submit">
+        {data.cms.emailButtonText}
+      </Button>
+    </Form>
   );
 };
 

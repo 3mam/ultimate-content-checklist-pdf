@@ -13,15 +13,18 @@ const Div = styled.div`
   .gatsby-image-wrapper {
     width: 100%;
     @media only screen and (max-width: 990px) {
-      max-width: 500px;
+      width: 85%;
+      min-width: 260px;
+      max-width: 380px;
     }
   }
 
-  @media ${device.mobile} {
+  @media only screen and (max-width: 990px) {
     justify-content: center;
     align-items: center;
-    margin: 0;
+    margin: 0 0 15px;
     width: 100%;
+    max-width: 505px;
     height: auto;
   }
 `;

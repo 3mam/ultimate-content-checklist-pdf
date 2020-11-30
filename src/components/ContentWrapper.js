@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const ContentWrapper = styled.div`
   max-width: 1366px;
@@ -21,10 +21,16 @@ export const ContentWrapper = styled.div`
     grid-column-gap: 30px;
   }
   @media only screen and (max-width: 990px) {
-    padding: 0;
+    padding: 0 20px;
     margin: 0;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
     width: 60vw;
+    grid-template-columns: unset;
+    grid-template-rows: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  @media only screen and (max-width: 528px) {
+    width: unset;
   }
 `;

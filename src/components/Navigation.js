@@ -85,11 +85,12 @@ const Navigation = ({ links, pathname, actualBg, setActualBg }) => {
         <DotsStyles>
           <ul>
             {links.map((link) => (
-              <LinksWrapper bg={actualBg}>
+              <LinksWrapper key={link.path} bg={actualBg}>
                 <Link className="dot" activeClassName="active" to={link.path}>
                   <NavigationListItem
                     active={pathname === link.path}
                     data-text={link.text}
+                    whileTap={{ scale: 0.8 }}
                   />
                 </Link>
                 <Link className="text" activeClassName="active" to={link.path}>
