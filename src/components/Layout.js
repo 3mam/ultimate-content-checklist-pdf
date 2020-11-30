@@ -38,7 +38,7 @@ const Layout = ({ children }) => {
 
   useEffect(() => {
     const index = links.findIndex((link) => link.path === pathname);
-    setActualBg(links[index].bg);
+    index !== -1 ? setActualBg(links[index].bg) : setActualBg('dark');
   }, [pathname]);
   const location = useLocation();
   let currentWidth = useCurrentWidth();

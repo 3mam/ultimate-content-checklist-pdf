@@ -15,10 +15,12 @@ const Div = styled(motion.div)`
 
 const Icon = styled(motion.a)`
   margin-right: 28px;
-  padding: 15px;
+  width: 46px;
+  height: 46px;
   background-color: #eff0f1;
   border-radius: 50%;
   color: black;
+  display: flex;
   justify-content: center;
   align-items: center;
   transition: background-color 0.4s cubic-bezier(0.075, 0.82, 0.165, 1),

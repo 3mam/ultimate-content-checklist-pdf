@@ -46,13 +46,6 @@ module.exports = {
         apiToken: process.env.API_DATO_CMS,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     trackingId: process.env.GA_TRACKING_ID,
-    //     head: true,
-    //   },
-    // },
     {
       resolve: 'gatsby-plugin-anchor-links',
       options: {
