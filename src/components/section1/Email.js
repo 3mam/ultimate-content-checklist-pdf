@@ -22,7 +22,6 @@ const Label = styled.label`
 `;
 
 const Button = styled(motion.button)`
-  width: 135px;
   height: 100%;
   margin-left: 14px;
   font-size: 16px;
@@ -56,7 +55,6 @@ const Span = styled.span`
 `;
 
 const Input = styled.input`
-  width: 310px;
   height: 60px;
   border-radius: 10px;
   border: none;
