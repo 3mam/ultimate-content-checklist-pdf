@@ -35,6 +35,9 @@ export const SectionA = styled(Section)`
     flex-basis: auto;
     padding: 40px 0 0;
   }
+  @media only screen and (max-width: 590px) {
+    padding: 40px 20px 0;
+  }
 `;
 
 const LearnPage = () => {

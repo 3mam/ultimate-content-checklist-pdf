@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 import device from '../../utils/device';
 
-const Div = styled.div`
+const StyledHeader = styled.h2`
   margin: 128px 0 0 0;
   font-family: Poppins;
   font-size: 62px;
@@ -15,11 +15,15 @@ const Div = styled.div`
   text-align: left;
   color: #171717;
   @media only screen and (max-width: 1194px) {
-    font-size: 47px;
+    font-size: 42px;
   }
   @media only screen and (max-width: 990px) {
     font-size: 26px;
     margin: 0;
+    align-self: flex-start;
+  }
+  @media only screen and (max-width: 590px) {
+    margin: 0 20px 0 20px;
   }
 `;
 
@@ -32,7 +36,7 @@ const AllInTitle = () => {
     }
   `);
 
-  return <Div id="allInTitle">{data.cms.allInTitle}</Div>;
+  return <StyledHeader id="allInTitle">{data.cms.allInTitle}</StyledHeader>;
 };
 
 export default AllInTitle;

@@ -25,6 +25,10 @@ export const SectionTitle = styled(Section)`
   @media only screen and (max-width: 990px) {
     margin: 0;
   }
+  @media only screen and (max-width: 590px) {
+    align-items: center;
+    text-align: left;
+  }
 `;
 
 export const SectionEbook = styled(Section)`

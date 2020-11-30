@@ -19,6 +19,7 @@ const Div = styled.div`
     }
     @media only screen and (max-width: 590px) {
       min-width: 200px;
+      max-width: calc(100% - 40px);
     }
   }
 
@@ -29,6 +30,9 @@ const Div = styled.div`
     width: 100%;
     max-width: 505px;
     height: auto;
+  }
+  @media only screen and (max-width: 590px) {
+    max-width: calc(100% - 40px);
   }
 `;
 

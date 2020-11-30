@@ -15,6 +15,9 @@ const StyledParagraph = styled.p`
     margin: 16px 0 0;
     font-size: 16px;
   }
+  @media only screen and (max-width: 590px) {
+    max-width: calc(100% - 40px);
+  }
 `;
 
 const AllInParagraph = () => {

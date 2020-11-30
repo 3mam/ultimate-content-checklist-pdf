@@ -14,6 +14,7 @@ export const ContentWrapper = styled.div`
   grid-column-gap: ${({ gridGap }) => (gridGap ? gridGap : '80px')};
   @media only screen and (max-width: 1366px) {
     padding-right: ${({ paddingRightZero }) => paddingRightZero && '0'};
+    max-width: 100%;
   }
   @media only screen and (max-width: 1194px) {
     padding: 60px 60px 60px 65px;
@@ -31,6 +32,8 @@ export const ContentWrapper = styled.div`
     align-items: center;
   }
   @media only screen and (max-width: 528px) {
+    padding: 0;
     width: unset;
+    max-width: 100%;
   }
 `;

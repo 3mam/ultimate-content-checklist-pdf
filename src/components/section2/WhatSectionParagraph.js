@@ -19,6 +19,9 @@ const StyledParagraph = styled.p`
     margin: 16px 0 56px;
     font-size: 16px;
   }
+  @media only screen and (max-width: 590px) {
+    max-width: unset;
+  }
 `;
 
 const WhatSectionParagraph = () => {

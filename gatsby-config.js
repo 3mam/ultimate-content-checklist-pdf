@@ -34,8 +34,8 @@ module.exports = {
         short_name: `naszokraj`,
         lang: `pl`,
         start_url: `/`,
-        background_color: `#EF5F38`,
-        theme_color: `#EF5F38`,
+        background_color: `#171717`,
+        theme_color: `#171717`,
         display: `minimal-ui`,
         icon: `static/icon.png`, // This path is relative to the root of the site.
       },

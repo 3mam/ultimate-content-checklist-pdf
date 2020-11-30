@@ -16,10 +16,13 @@ const StyledHeader = styled(motion.h1)`
   margin-bottom: 26px;
   max-width: 404px;
   @media only screen and (max-width: 1194px) {
-    font-size: 47px;
+    font-size: 42px;
   }
   @media only screen and (max-width: 990px) {
     margin-top: 110px;
+  }
+  @media only screen and (max-width: 590px) {
+    max-width: calc(100% - 40px);
   }
 `;
 

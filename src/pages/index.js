@@ -37,6 +37,13 @@ const SectionB = styled(motion.div)`
   @media only screen and (max-width: 990px) {
     margin-bottom: 15px;
   }
+  @media only screen and (max-width: 590px) {
+    align-items: center;
+    h1,
+    p {
+      max-width: calc(100% - 40px);
+    }
+  }
 `;
 
 const HomePage = () => {

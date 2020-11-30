@@ -12,6 +12,10 @@ const Form = styled.form`
     justify-content: stretch;
     max-width: 505px;
   }
+
+  @media only screen and (max-width: 990px) {
+    max-width: calc(100% - 40px);
+  }
 `;
 
 const Label = styled.label`
@@ -27,6 +31,7 @@ const Button = styled(motion.button)`
   font-size: 16px;
   line-height: 1.47em;
   cursor: pointer;
+  padding: 10px 26px;
   transition: box-shadow 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
 
   &:hover:not(:focus) {
@@ -63,7 +68,8 @@ const Input = styled.input`
   padding: 0;
   font-size: 16px;
   line-height: 1.47em;
-  text-align: center;
+  text-align: left;
+  padding: 0px 18px;
   font-family: 'Poppins';
   color: #171717;
   transition: box-shadow 0.35s cubic-bezier(0.075, 0.82, 0.165, 1);
