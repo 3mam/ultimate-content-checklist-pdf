@@ -51,7 +51,7 @@ const HomePage = () => {
   return (
     <Layout>
       <Wrapper>
-        <ContentWrapper padding="90px 120px 90px 135px">
+        <ContentWrapper gridGap="60px" padding="90px 120px 90px 135px">
           <Logo position="absolute" top="138px" left="95px" dark={false} />
           <SectionB>
             <HeroTitle />
