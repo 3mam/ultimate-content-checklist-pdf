@@ -42,8 +42,10 @@ function returnDefaultRespond() {
 	};
 }
 
-function getEmailFromEvent({ multiValueHeaders, multiValueQueryStringParameters }) {
-	if (multiValueHeaders.email !== undefined)
+function getEmailFromEvent({ httpMethod, body, multiValueHeaders, multiValueQueryStringParameters }) {
+	if (httpMethod === 'POST')
+		return JSON.parse(body).email;
+	else if (multiValueHeaders.email !== undefined)
 		return multiValueHeaders.email[0];
 	else if (multiValueQueryStringParameters.email !== undefined)
 		return multiValueQueryStringParameters.email[0];
