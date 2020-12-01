@@ -198,18 +198,7 @@ const Email = () => {
 		setTimeout(() => {
 			if (counter < 4) {
 				const email = emailInput;
-<<<<<<< HEAD
 				const request = new Request(`.netlify/functions/email?email=${email}`);
-=======
-				console.log(email);
-				const header = new Headers();
-				header.append('email', email);
-				console.log(header);
-				const request = new Request('.netlify/functions/email', {
-					method: 'GET',
-					headers: header,
-				});
->>>>>>> parent of 39edb8a... switched method to send email
 				fetch(request).then((data) => {
 					setCounter(counter + 1);
 					if (data.status === 200) {
