@@ -199,12 +199,12 @@ const Email = () => {
 			if (counter < 4) {
 				const email = emailInput;
 				console.log(email);
-				const header = new Headers();
-				header.append('email', email);
+				const data = new FormData();
+				data.append('email', email)
 				console.log(data);
 				const request = new Request('.netlify/functions/email', {
-					method: 'POST',
-					headers: header,
+					method: 'GET',
+					body: data,
 				});
 				fetch(request).then((data) => {
 					console.log(data);
