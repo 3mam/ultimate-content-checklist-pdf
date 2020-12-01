@@ -232,7 +232,7 @@ const Email = () => {
 					setMessage('');
 				}, 15000);
 			}
-		}, 1000);
+		}, 5000);
 	};
 
 	return (
