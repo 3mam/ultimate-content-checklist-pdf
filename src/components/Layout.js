@@ -5,6 +5,7 @@ import { useLocation, navigate } from '@reach/router';
 import Navigation from './Navigation';
 import GlobalStyles from '../styles/GlobalStyles';
 import useCurrentWidth from '../hooks/useCurrentWidth';
+import _ from 'lodash';
 
 const StyledMain = styled(motion.main)`
   ${({ desktop }) =>
@@ -44,37 +45,58 @@ const Layout = ({ children }) => {
   let currentWidth = useCurrentWidth();
 
   const handleUserKeyPress = useCallback((event) => {
-    const { key, keyCode } = event;
-    if (keyCode === 40 || keyCode == 39) {
-      if (pathname === links[0].path) {
-        navigate(links[1].path);
-      } else if (pathname === links[1].path) {
-        navigate(links[2].path);
+    console.log('Press: ', event);
+    if (currentWidth > 990) {
+      const { key, keyCode } = event;
+      if (keyCode === 40 || keyCode == 39) {
+        if (pathname === links[0].path) {
+          navigate(links[1].path);
+        } else if (pathname === links[1].path) {
+          navigate(links[2].path);
+        }
       }
-    }
-    if (keyCode === 38 || keyCode == 37) {
-      // arrow up
-      if (pathname === links[1].path) {
-        navigate(links[0].path);
-      } else if (pathname === links[2].path) {
-        navigate(links[1].path);
+      if (keyCode === 38 || keyCode == 37) {
+        // arrow up
+        if (pathname === links[1].path) {
+          navigate(links[0].path);
+        } else if (pathname === links[2].path) {
+          navigate(links[1].path);
+        }
       }
     }
   }, []);
 
-  const handleUserScroll = useCallback((event) => {
-    // const { key, keyCode } = event;
-    console.log('Scroll: ', event);
-  }, []);
+  const handleUserScroll = useCallback(
+    _.throttle((event) => {
+      const { deltaY } = event;
+      console.log('Deltay: ', deltaY);
+      if (deltaY < 0) {
+        if (pathname === links[1].path) {
+          navigate(links[0].path);
+        } else if (pathname === links[2].path) {
+          navigate(links[1].path);
+        }
+      } else if (deltaY > 0) {
+        if (pathname === links[0].path) {
+          navigate(links[1].path);
+        } else if (pathname === links[1].path) {
+          navigate(links[2].path);
+        }
+      }
+    }, 1200),
+    [],
+  );
 
   useEffect(() => {
-    window.addEventListener('keydown', handleUserKeyPress);
-    window.addEventListener('wheel', handleUserScroll);
+    if (currentWidth > 990) {
+      window.addEventListener('keydown', handleUserKeyPress);
+      window.addEventListener('wheel', handleUserScroll);
 
-    return () => {
-      window.removeEventListener('keydown', handleUserKeyPress);
-      window.removeEventListener('wheel', handleUserScroll);
-    };
+      return () => {
+        window.removeEventListener('keydown', handleUserKeyPress);
+        window.removeEventListener('wheel', handleUserScroll);
+      };
+    }
   }, [handleUserKeyPress, handleUserScroll]);
 
   return (

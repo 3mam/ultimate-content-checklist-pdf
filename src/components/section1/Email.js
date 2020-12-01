@@ -112,14 +112,14 @@ const rotateAnimation = keyframes`
 `;
 
 export const LoaderStyles = styled(motion.span)`
-  width: 32px;
-  height: 32px;
-  border-top: 2px solid ${({ mobile }) => (mobile ? '#fff' : '#171717')};
+  width: 24px;
+  height: 24px;
+  border-top: 2px solid ${({ mobile }) => (mobile ? '#fff' : '#fff')};
   border-radius: 50%;
   z-index: 2;
   position: absolute;
-  right: 20px;
-  bottom: 48px;
+  left: 0;
+  bottom: -46px;
   ${({ relative }) =>
     relative &&
     css`
@@ -142,7 +142,7 @@ export const MessageStyles = styled(motion.p)`
   color: ${({ error }) => (error ? '#e42020' : '#fff')};
   position: absolute;
   left: 0;
-  bottom: -66px;
+  bottom: -46px;
   ${({ relative }) =>
     relative &&
     css`
@@ -193,43 +193,45 @@ const Email = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    if (counter < 4) {
-      const email = emailInput;
-      const header = new Headers();
-      header.append('email', email);
-      const request = new Request('.netlify/functions/email', {
-        method: 'GET',
-        headers: header,
-      });
-      fetch(request).then((data) => {
-        console.log(data);
-        setCounter(counter + 1);
-        if (data.ok) {
-          setError(false);
-          setMessage(
-            'Thank you! Now check your email and confirm your subscription. 🚀',
-          );
-          setLoading(false);
-          setTimeout(() => {
-            setMessage('');
-          }, 5000);
-        } else {
-          setError(true);
-          setMessage('Something went wrong, try again, please.');
-          setLoading(false);
-          setTimeout(() => {
-            setMessage('');
-          }, 5000);
-        }
-      });
-    } else {
-      setMessage('Whoooah! You really like our newsletter! Thanks! 🤭');
-      setLoading(false);
-      setError(false);
-      setTimeout(() => {
-        setMessage('');
-      }, 5000);
-    }
+    setTimeout(() => {
+      if (counter < 4) {
+        const email = emailInput;
+        const header = new Headers();
+        header.append('email', email);
+        const request = new Request('.netlify/functions/email', {
+          method: 'GET',
+          headers: header,
+        });
+        fetch(request).then((data) => {
+          console.log(data);
+          setCounter(counter + 1);
+          if (data.ok) {
+            setError(false);
+            setMessage(
+              'Thank you! Now check your email and confirm your subscription. 🚀',
+            );
+            setLoading(false);
+            setTimeout(() => {
+              setMessage('');
+            }, 5000);
+          } else {
+            setError(true);
+            setMessage('Something went wrong, try again, please.');
+            setLoading(false);
+            setTimeout(() => {
+              setMessage('');
+            }, 5000);
+          }
+        });
+      } else {
+        setMessage('Whoooah! You really like our newsletter! Thanks! 🤭');
+        setLoading(false);
+        setError(false);
+        setTimeout(() => {
+          setMessage('');
+        }, 5000);
+      }
+    }, 10000);
   };
 
   return (
@@ -242,10 +244,11 @@ const Email = () => {
           required
           value={emailInput}
           onChange={(e) => handleInputChange(e)}
+          disabled={loading}
         />
         <Span>email</Span>
       </Label>
-      <Button whileTap={{ scale: 0.9 }} type="submit">
+      <Button disabled={loading} whileTap={{ scale: 0.9 }} type="submit">
         {data.cms.emailButtonText}
       </Button>
       <AnimatePresence>
