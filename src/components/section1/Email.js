@@ -201,8 +201,11 @@ const Email = () => {
 				console.log(email);
 				const header = new Headers();
 				header.append('email', email);
-				console.log(header);
-				const request = new Request(`.netlify/functions/email?email=${email}`);
+				console.log(data);
+				const request = new Request('.netlify/functions/email', {
+					method: 'POST',
+					headers: header,
+				});
 				fetch(request).then((data) => {
 					console.log(data);
 
