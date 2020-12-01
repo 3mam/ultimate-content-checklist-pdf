@@ -198,8 +198,11 @@ const Email = () => {
 		setTimeout(() => {
 			if (counter < 4) {
 				const email = emailInput;
-				const request = new Request(`.netlify/functions/email?email=${email}`);
-				fetch(request).then((data) => {
+				fetch('.netlify/functions/email', {
+					headers: {
+						'email': email,
+					},
+				}).then((data) => {
 					setCounter(counter + 1);
 					if (data.status === 200) {
 						setError(false);
