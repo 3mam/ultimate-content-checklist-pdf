@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 import device from '../../utils/device';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -32,8 +32,9 @@ export const Button = styled(motion.button)`
   font-size: 16px;
   line-height: 1.47em;
   cursor: pointer;
-  padding: 10px 26px;
+  padding: 10px 16px;
   transition: box-shadow 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+  min-width: 130px;
 
   &:hover:not(:focus) {
     box-shadow: 0 0 0pt 1pt #00ef8b;
@@ -43,6 +44,10 @@ export const Button = styled(motion.button)`
     width: auto;
     height: 60px;
     margin-left: 0;
+  }
+
+  @media only screen and (max-width: 590px) {
+    margin-bottom: 36px;
   }
 `;
 
@@ -96,24 +101,70 @@ export const Input = styled(motion.input)`
   }
 `;
 
-const LoaderStyles = styled(motion.span)`
-  width: 16px;
-  height: 16px;
-  border-top: 1px solid var(--accent);
-  background-color: var(--accent);
-  z-index: 2;
-  position: absolute;
-  right: 0;
+const rotateAnimation = keyframes`
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 `;
 
-const MessageStyles = styled(motion.p)`
-  font-size: 14px;
+export const LoaderStyles = styled(motion.span)`
+  width: 32px;
+  height: 32px;
+  border-top: 2px solid ${({ mobile }) => (mobile ? '#fff' : '#171717')};
+  border-radius: 50%;
+  z-index: 2;
+  position: absolute;
+  right: 20px;
+  bottom: 48px;
+  ${({ relative }) =>
+    relative &&
+    css`
+      left: calc(50% - 20px);
+      bottom: 120px;
+    `}
+  animation: ${rotateAnimation} 1s infinite forwards;
+  ${({ mobile }) =>
+    mobile &&
+    css`
+      left: calc(50% - 20px);
+      bottom: 120px;
+    `}
+`;
+
+export const MessageStyles = styled(motion.p)`
+  font-size: 13px;
   line-height: 1.3em;
   font-family: 'Poppins';
-  color: ${({ error }) => (error ? '' : '#fff')};
+  color: ${({ error }) => (error ? '#e42020' : '#fff')};
   position: absolute;
   left: 0;
   bottom: -66px;
+  ${({ relative }) =>
+    relative &&
+    css`
+      text-align: center;
+      bottom: 30%;
+      margin: 0 20px;
+      left: 0;
+    `}
+
+  @media only screen and (max-width: 590px) {
+    bottom: -20px;
+    text-align: center;
+    max-width: 100%;
+    left: 20px;
+    ${({ mobile }) =>
+      mobile &&
+      css`
+        bottom: 30%;
+        margin: 0 20px;
+        left: 0;
+      `}
+  }
 `;
 
 const Email = () => {
@@ -121,6 +172,12 @@ const Email = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [counter, setCounter] = useState(0);
+  const [emailInput, setEmailInput] = useState('');
+
+  const handleInputChange = (e) => {
+    setEmailInput(e.target.value);
+    console.log(emailInput);
+  };
 
   const data = useStaticQuery(graphql`
     {
@@ -135,9 +192,9 @@ const Email = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     if (counter < 4) {
-      setLoading(true);
-      const email = e.target.children[0].children[0].value;
+      const email = emailInput;
       const header = new Headers();
       header.append('email', email);
       const request = new Request('.netlify/functions/email', {
@@ -146,23 +203,32 @@ const Email = () => {
       });
       fetch(request).then((data) => {
         console.log(data);
+        setCounter(counter + 1);
         if (data.ok) {
           setError(false);
           setMessage(
-            '💪 Thank you! Now check your email and confirm your subscription. 🚀',
+            'Thank you! Now check your email and confirm your subscription. 🚀',
           );
           setLoading(false);
-          setCounter(counter + 1);
+          setTimeout(() => {
+            setMessage('');
+          }, 5000);
         } else {
           setError(true);
-          setMessage('Something went wrong, try again, please! 😄');
+          setMessage('Something went wrong, try again, please.');
           setLoading(false);
+          setTimeout(() => {
+            setMessage('');
+          }, 5000);
         }
       });
     } else {
       setMessage('Whoooah! You really like our newsletter! Thanks! 🤭');
       setLoading(false);
       setError(false);
+      setTimeout(() => {
+        setMessage('');
+      }, 5000);
     }
   };
 
@@ -174,10 +240,12 @@ const Email = () => {
           pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
           placeholder={data.cms.emailPlaceholder}
           required
+          value={emailInput}
+          onChange={(e) => handleInputChange(e)}
         />
         <Span>email</Span>
       </Label>
-      <Button disabled={counter >= 3} whileTap={{ scale: 0.9 }} type="submit">
+      <Button whileTap={{ scale: 0.9 }} type="submit">
         {data.cms.emailButtonText}
       </Button>
       <AnimatePresence>
@@ -194,7 +262,8 @@ const Email = () => {
           <MessageStyles
             initial={{ opacity: 0, y: 4 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0 }}
+            exit={{ opacity: 0, y: 8 }}
+            error={error}
           >
             {message}
           </MessageStyles>

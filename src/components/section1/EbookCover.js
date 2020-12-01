@@ -9,7 +9,6 @@ const Div = styled.div`
   height: auto;
   display: flex;
   align-items: center;
-  margin-top: 5%;
   .gatsby-image-wrapper {
     width: 100%;
     @media only screen and (max-width: 990px) {

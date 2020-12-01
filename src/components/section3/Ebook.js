@@ -4,7 +4,12 @@ import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import useCurrentWidth from '../../hooks/useCurrentWidth';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Input, Button as ButtonForm } from '../section1/Email';
+import {
+  Input,
+  Button as ButtonForm,
+  LoaderStyles,
+  MessageStyles,
+} from '../section1/Email';
 
 const Div = styled.div`
   background-color: #171717;
@@ -137,13 +142,14 @@ const ModalStyles = styled(motion.form)`
   input {
     &:focus + label {
       color: #00ef8b;
-      transform: translate(16px, -84px);
+      transform: translate(16px, -92px);
       opacity: 1;
       @media only screen and (max-width: 990px) {
         transform: translate(18px, -104px);
         opacity: 1;
       }
     }
+    margin-bottom: 8px;
   }
 
   label {
@@ -162,6 +168,10 @@ const ModalStyles = styled(motion.form)`
   button[type='submit'] {
     height: 60px;
     cursor: pointer;
+
+    &:hover:not(:focus) {
+      box-shadow: 0 0 0pt 1pt #00ef8b;
+    }
 
     &:focus {
       box-shadow: '0 0 1pt 2p2 #00ef8b';
@@ -189,10 +199,59 @@ const ModalStyles = styled(motion.form)`
 `;
 
 const Modal = ({ closeModal }) => {
+  const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [counter, setCounter] = useState(0);
+  const [emailInput, setEmailInput] = useState('');
+
+  const handleInputChange = (e) => {
+    setEmailInput(e.target.value);
+    console.log(emailInput);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Submitted');
+    setLoading(true);
+    if (counter < 4) {
+      const email = emailInput;
+      const header = new Headers();
+      header.append('email', email);
+      const request = new Request('.netlify/functions/email', {
+        method: 'GET',
+        headers: header,
+      });
+      fetch(request).then((data) => {
+        console.log(data);
+        setCounter(counter + 1);
+        if (data.ok) {
+          setError(false);
+          setMessage(
+            'Thank you! Now check your email and confirm your subscription. 🚀',
+          );
+          setLoading(false);
+          setTimeout(() => {
+            closeModal();
+          }, 8000);
+        } else {
+          setError(true);
+          setMessage('Something went wrong, try again, please.');
+          setLoading(false);
+          setTimeout(() => {
+            closeModal();
+          }, 8000);
+        }
+      });
+    } else {
+      setMessage('Whoooah! You really like our newsletter! Thanks! 🤭');
+      setLoading(false);
+      setError(false);
+      setTimeout(() => {
+        setMessage('');
+      }, 5000);
+    }
   };
+
   return (
     <ModalStyles
       initial={{ opacity: 0 }}
@@ -206,6 +265,8 @@ const Modal = ({ closeModal }) => {
         name="emailInput"
         placeholder="Your email"
         required
+        value={emailInput}
+        onChange={(e) => handleInputChange(e)}
       />
       <label htmlFor="emailInput">email</label>
       <motion.button
@@ -215,6 +276,32 @@ const Modal = ({ closeModal }) => {
       >
         Send
       </motion.button>
+
+      <AnimatePresence>
+        {loading && (
+          <LoaderStyles
+            initial={{ opacity: 0, rotate: 0 }}
+            animate={{ opacity: 1, rotate: 359 }}
+            exit={{ opacity: 0, scale: 0 }}
+            mobile
+            relative
+          />
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {message && (
+          <MessageStyles
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
+            error={error}
+            mobile
+            relative
+          >
+            {message}
+          </MessageStyles>
+        )}
+      </AnimatePresence>
       <motion.button
         whileHover={{ scale: 1.2, color: '#00ef8b' }}
         whileTap={{ scale: 0.9 }}

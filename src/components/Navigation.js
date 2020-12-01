@@ -79,10 +79,23 @@ const NavigationListItem = styled(motion.li)`
 
 const Navigation = ({ links, pathname, actualBg, setActualBg }) => {
   let width = useCurrentWidth();
+
+  const handleWheel = (e) => {
+    console.log(e.target);
+  };
+
+  const handleKeyUp = (e) => {
+    if (e.key === 'ArrowUp') {
+      console.log('Arrow up');
+    }
+    if (e.key === 'ArrowDown') {
+      console.log('Arrow down');
+    }
+  };
   return (
     <>
       {width > 990 && (
-        <DotsStyles>
+        <DotsStyles onWheel={handleWheel} onKeyUp={handleKeyUp}>
           <ul>
             {links.map((link) => (
               <LinksWrapper key={link.path} bg={actualBg}>
