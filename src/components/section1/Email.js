@@ -203,7 +203,7 @@ const Email = () => {
 				data.append('email', email)
 				console.log(data);
 				const request = new Request('.netlify/functions/email', {
-					method: 'GET',
+					method: 'POST',
 					body: data,
 				});
 				fetch(request).then((data) => {
