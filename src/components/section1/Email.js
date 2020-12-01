@@ -201,11 +201,14 @@ const Email = () => {
 				console.log(email);
 				const header = new Headers();
 				header.append('email', email);
+				console.log(header);
 				const request = new Request('.netlify/functions/email', {
 					method: 'GET',
 					headers: header,
 				});
 				fetch(request).then((data) => {
+					console.log(data);
+
 					setCounter(counter + 1);
 					if (data.status === 200) {
 						setError(false);
