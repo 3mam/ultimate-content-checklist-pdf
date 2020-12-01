@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styled, { css } from 'styled-components';
-import { useLocation } from '@reach/router';
+import { useLocation, navigate } from '@reach/router';
 import Navigation from './Navigation';
 import GlobalStyles from '../styles/GlobalStyles';
 import useCurrentWidth from '../hooks/useCurrentWidth';
@@ -25,12 +25,12 @@ const Layout = ({ children }) => {
       bg: 'dark',
     },
     {
-      path: '/what-can-you-learn-from-ebook',
+      path: '/what-can-you-learn-from-ebook/',
       text: 'Learn',
       bg: 'light',
     },
     {
-      path: '/all-in-one-content-checklist',
+      path: '/all-in-one-content-checklist/',
       text: 'Workflow',
       bg: 'light',
     },
@@ -42,6 +42,41 @@ const Layout = ({ children }) => {
   }, [pathname]);
   const location = useLocation();
   let currentWidth = useCurrentWidth();
+
+  const handleUserKeyPress = useCallback((event) => {
+    const { key, keyCode } = event;
+    if (keyCode === 40 || keyCode == 39) {
+      if (pathname === links[0].path) {
+        navigate(links[1].path);
+      } else if (pathname === links[1].path) {
+        navigate(links[2].path);
+      }
+    }
+    if (keyCode === 38 || keyCode == 37) {
+      // arrow up
+      if (pathname === links[1].path) {
+        navigate(links[0].path);
+      } else if (pathname === links[2].path) {
+        navigate(links[1].path);
+      }
+    }
+  }, []);
+
+  const handleUserScroll = useCallback((event) => {
+    // const { key, keyCode } = event;
+    console.log('Scroll: ', event);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleUserKeyPress);
+    window.addEventListener('wheel', handleUserScroll);
+
+    return () => {
+      window.removeEventListener('keydown', handleUserKeyPress);
+      window.removeEventListener('wheel', handleUserScroll);
+    };
+  }, [handleUserKeyPress, handleUserScroll]);
+
   return (
     <>
       <GlobalStyles desktop={currentWidth > 990} />
