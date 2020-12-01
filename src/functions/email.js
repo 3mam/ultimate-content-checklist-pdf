@@ -1,7 +1,7 @@
 function sendEmail(email) {
 	const https = require('https')
 	const data = JSON.stringify({
-		email: email,
+		'email': email,
 	})
 
 	const options = {
@@ -15,11 +15,15 @@ function sendEmail(email) {
 		}
 	}
 
-	return new Promise((resolve) => {
+	return new Promise((resolve, reject) => {
 		const req = https.request(options, res => {
-			let data = []
+			let data = null
 			res.on('data', d => {
 				data += d
+			})
+
+			res.on('error', e => {
+				reject(e)
 			})
 
 			res.on('end', () => {
@@ -33,18 +37,18 @@ function sendEmail(email) {
 }
 
 
-exports.handler = async function (get) {
-	if (get.multiValueHeaders.email === undefined)
+exports.handler = async function (event) {
+	if (event.multiValueHeaders.email === undefined)
 		return {
 			statusCode: 400,
 			body: 'No email!',
 		}
 
-	const [email] = get.multiValueHeaders.email
-	const answer = await sendEmail(email)
+	const [email] = event.multiValueHeaders.email
+	const { code, data } = await sendEmail(email)
 
 	return {
-		statusCode: answer.code,
-		body: answer.data,
+		statusCode: code,
+		body: data,
 	}
 }
