@@ -120,6 +120,9 @@ export const LoaderStyles = styled(motion.span)`
   position: absolute;
   left: 0;
   bottom: -46px;
+  @media only screen and (max-width: 590px) {
+    bottom: -20px;
+  }
   ${({ relative }) =>
     relative &&
     css`
@@ -149,7 +152,7 @@ export const MessageStyles = styled(motion.p)`
       text-align: center;
       bottom: 30%;
       margin: 0 20px;
-      left: 0;
+      left: 10px;
     `}
 
   @media only screen and (max-width: 590px) {
@@ -170,13 +173,12 @@ export const MessageStyles = styled(motion.p)`
 const Email = () => {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(true);
   const [counter, setCounter] = useState(0);
   const [emailInput, setEmailInput] = useState('');
 
   const handleInputChange = (e) => {
     setEmailInput(e.target.value);
-    console.log(emailInput);
   };
 
   const data = useStaticQuery(graphql`
@@ -203,9 +205,8 @@ const Email = () => {
           headers: header,
         });
         fetch(request).then((data) => {
-          console.log(data);
           setCounter(counter + 1);
-          if (data.ok) {
+          if (data.status === 200) {
             setError(false);
             setMessage(
               'Thank you! Now check your email and confirm your subscription. 🚀',
@@ -213,14 +214,14 @@ const Email = () => {
             setLoading(false);
             setTimeout(() => {
               setMessage('');
-            }, 5000);
+            }, 15000);
           } else {
             setError(true);
             setMessage('Something went wrong, try again, please.');
             setLoading(false);
             setTimeout(() => {
               setMessage('');
-            }, 5000);
+            }, 15000);
           }
         });
       } else {
@@ -229,9 +230,9 @@ const Email = () => {
         setError(false);
         setTimeout(() => {
           setMessage('');
-        }, 5000);
+        }, 15000);
       }
-    }, 10000);
+    }, 5000);
   };
 
   return (

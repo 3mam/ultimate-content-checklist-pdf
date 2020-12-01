@@ -83,7 +83,6 @@ const AllInPage = () => {
         </Layout>
       ) : (
         <Flex>
-          Better don't mess around here
           <Link to="/">&larr; The Ultimate Content Checklist</Link>
         </Flex>
       )}

@@ -1,3 +1,4 @@
+import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
@@ -20,6 +21,11 @@ const Styles = styled.div`
     font-size: 47px;
     font-weight: 400;
   }
+
+  a {
+    text-decoration: none;
+    color: var(--accent);
+  }
 `;
 
 const NotFoundPage = () => {
@@ -27,7 +33,9 @@ const NotFoundPage = () => {
     <Layout bg="dark">
       <SEO title="Not found page" />
       <Styles>
-        <h1>Not found 🤷‍♂️</h1>
+        <h1>
+          Not found 🤷‍♂️ <Link to="/">&rarr;</Link>
+        </h1>
       </Styles>
     </Layout>
   );

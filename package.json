@@ -25,6 +25,7 @@
 		"gatsby-transformer-sharp": "^2.6.0",
 		"gsap": "^3.5.1",
 		"lodash.throttle": "^4.1.1",
+		"netlify-cli": "^2.69.0",
 		"popmotion": "^9.0.0",
 		"prop-types": "^15.7.2",
 		"query-string": "^6.13.7",

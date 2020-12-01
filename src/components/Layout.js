@@ -45,7 +45,6 @@ const Layout = ({ children }) => {
   let currentWidth = useCurrentWidth();
 
   const handleUserKeyPress = useCallback((event) => {
-    console.log('Press: ', event);
     if (currentWidth > 990) {
       const { key, keyCode } = event;
       if (keyCode === 40 || keyCode == 39) {
@@ -69,7 +68,6 @@ const Layout = ({ children }) => {
   const handleUserScroll = useCallback(
     _.throttle((event) => {
       const { deltaY } = event;
-      console.log('Deltay: ', deltaY);
       if (deltaY < 0) {
         if (pathname === links[1].path) {
           navigate(links[0].path);

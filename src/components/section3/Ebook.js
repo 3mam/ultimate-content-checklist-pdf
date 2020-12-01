@@ -201,13 +201,12 @@ const ModalStyles = styled(motion.form)`
 const Modal = ({ closeModal }) => {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(true);
   const [counter, setCounter] = useState(0);
   const [emailInput, setEmailInput] = useState('');
 
   const handleInputChange = (e) => {
     setEmailInput(e.target.value);
-    console.log(emailInput);
   };
 
   const handleSubmit = (e) => {
@@ -222,7 +221,6 @@ const Modal = ({ closeModal }) => {
         headers: header,
       });
       fetch(request).then((data) => {
-        console.log(data);
         setCounter(counter + 1);
         if (data.ok) {
           setError(false);
