@@ -27,7 +27,7 @@ function sendEmail(email) {
 			});
 
 			res.on('end', () => {
-				resolve({ code: res.statusCode, data: data });
+				resolve({ statusCode: res.statusCode, body: data });
 			});
 		});
 		req.write(data);
@@ -52,15 +52,9 @@ function getEmailFromEvent({ multiValueHeaders, multiValueQueryStringParameters 
 }
 
 exports.handler = async function (event) {
-	console.log(event);
 	const emailFromEvent = getEmailFromEvent(event);
 	if (!emailFromEvent)
 		return returnDefaultRespond();
 
-	const { code, data } = await sendEmail(emailFromEvent);
-
-	return {
-		statusCode: code,
-		body: data,
-	};
+	return await sendEmail(emailFromEvent);
 };
