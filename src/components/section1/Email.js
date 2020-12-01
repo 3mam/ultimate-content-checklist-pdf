@@ -198,7 +198,11 @@ const Email = () => {
 		setTimeout(() => {
 			if (counter < 4) {
 				const email = emailInput;
-				fetch(`.netlify/functions/email?email=${email}`).then((data) => {
+				fetch(`.netlify/functions/email`, {
+					headers: {
+						'email': email,
+					},
+				}).then((data) => {
 					setCounter(counter + 1);
 					if (data.status === 200) {
 						setError(false);
@@ -226,7 +230,7 @@ const Email = () => {
 					setMessage('');
 				}, 15000);
 			}
-		}, 5000);
+		}, 1000);
 	};
 
 	return (
