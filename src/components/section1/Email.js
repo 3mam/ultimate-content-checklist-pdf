@@ -198,18 +198,7 @@ const Email = () => {
 		setTimeout(() => {
 			if (counter < 4) {
 				const email = emailInput;
-<<<<<<< HEAD
 				const request = new Request(`.netlify/functions/email?email=${email}`);
-=======
-				console.log(email);
-				const data = new FormData();
-				data.append('email', email)
-				console.log(data);
-				const request = new Request('.netlify/functions/email', {
-					method: 'POST',
-					body: data,
-				});
->>>>>>> 86192771ea1ceb450f0502f8131fab239310a4c0
 				fetch(request).then((data) => {
 					setCounter(counter + 1);
 					if (data.status === 200) {
