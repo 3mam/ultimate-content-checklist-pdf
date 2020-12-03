@@ -124,15 +124,15 @@ export const LoaderStyles = styled(motion.span)`
     bottom: -20px;
   }
   ${({ relative }) =>
-		relative &&
-		css`
+    relative &&
+    css`
       left: calc(50% - 20px);
       bottom: 120px;
     `}
   animation: ${rotateAnimation} 1s infinite forwards;
   ${({ mobile }) =>
-		mobile &&
-		css`
+    mobile &&
+    css`
       left: calc(50% - 20px);
       bottom: 120px;
     `}
@@ -147,8 +147,8 @@ export const MessageStyles = styled(motion.p)`
   left: 0;
   bottom: -46px;
   ${({ relative }) =>
-		relative &&
-		css`
+    relative &&
+    css`
       text-align: center;
       bottom: 30%;
       margin: 0 20px;
@@ -161,8 +161,8 @@ export const MessageStyles = styled(motion.p)`
     max-width: 100%;
     left: 20px;
     ${({ mobile }) =>
-		mobile &&
-		css`
+      mobile &&
+      css`
         bottom: 30%;
         margin: 0 20px;
         left: 0;
@@ -171,17 +171,17 @@ export const MessageStyles = styled(motion.p)`
 `;
 
 const Email = () => {
-	const [message, setMessage] = useState('');
-	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState(true);
-	const [counter, setCounter] = useState(0);
-	const [emailInput, setEmailInput] = useState('');
+  const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(true);
+  const [counter, setCounter] = useState(0);
+  const [emailInput, setEmailInput] = useState('');
 
-	const handleInputChange = (e) => {
-		setEmailInput(e.target.value);
-	};
+  const handleInputChange = (e) => {
+    setEmailInput(e.target.value);
+  };
 
-	const data = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     {
       cms: datoCmsLandingPageContent {
         emailPlaceholder
@@ -192,89 +192,87 @@ const Email = () => {
     }
   `);
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		setLoading(true);
-		setTimeout(() => {
-			if (counter < 4) {
-				const email = emailInput;
-				fetch(`.netlify/functions/email`, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify({ 'email': email }),
-				}).then((data) => {
-					setCounter(counter + 1);
-					if (data.status === 200) {
-						setError(false);
-						setMessage(
-							'Thank you! Now check your email and confirm your subscription. 🚀',
-						);
-						setLoading(false);
-						setTimeout(() => {
-							setMessage('');
-						}, 15000);
-					} else {
-						setError(true);
-						setMessage('Something went wrong, try again, please.');
-						setLoading(false);
-						setTimeout(() => {
-							setMessage('');
-						}, 15000);
-					}
-				});
-			} else {
-				setMessage('Whoooah! You really like our newsletter! Thanks! 🤭');
-				setLoading(false);
-				setError(false);
-				setTimeout(() => {
-					setMessage('');
-				}, 15000);
-			}
-		}, 5000);
-	};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    if (counter < 4) {
+      const email = emailInput;
+      fetch(`.netlify/functions/email`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: email }),
+      }).then((data) => {
+        setCounter(counter + 1);
+        if (data.status === 200) {
+          setError(false);
+          setMessage(
+            'Thank you! Now check your email and confirm your subscription. 🚀',
+          );
+          setLoading(false);
+          setTimeout(() => {
+            setMessage('');
+          }, 8000);
+        } else {
+          setError(true);
+          setMessage('Something went wrong, try again, please.');
+          setLoading(false);
+          setTimeout(() => {
+            setMessage('');
+          }, 8000);
+        }
+      });
+    } else {
+      setMessage('Whoooah! You really like our newsletter! Thanks! 🤭');
+      setLoading(false);
+      setError(false);
+      setTimeout(() => {
+        setMessage('');
+      }, 5000);
+    }
+  };
 
-	return (
-		<Form id="email" onSubmit={handleSubmit}>
-			<Label>
-				<Input
-					type="text"
-					pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-					placeholder={data.cms.emailPlaceholder}
-					required
-					value={emailInput}
-					onChange={(e) => handleInputChange(e)}
-					disabled={loading}
-				/>
-				<Span>email</Span>
-			</Label>
-			<Button disabled={loading} whileTap={{ scale: 0.9 }} type="submit">
-				{data.cms.emailButtonText}
-			</Button>
-			<AnimatePresence>
-				{loading && (
-					<LoaderStyles
-						initial={{ opacity: 0, rotate: 0 }}
-						animate={{ opacity: 1, rotate: 359 }}
-						exit={{ opacity: 0, scale: 0 }}
-					/>
-				)}
-			</AnimatePresence>
-			<AnimatePresence>
-				{message && (
-					<MessageStyles
-						initial={{ opacity: 0, y: 4 }}
-						animate={{ opacity: 1, y: 0 }}
-						exit={{ opacity: 0, y: 8 }}
-						error={error}
-					>
-						{message}
-					</MessageStyles>
-				)}
-			</AnimatePresence>
-		</Form>
-	);
+  return (
+    <Form id="email" onSubmit={handleSubmit}>
+      <Label>
+        <Input
+          type="text"
+          pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          placeholder={data.cms.emailPlaceholder}
+          required
+          value={emailInput}
+          onChange={(e) => handleInputChange(e)}
+          disabled={loading}
+        />
+        <Span>email</Span>
+      </Label>
+      <Button disabled={loading} whileTap={{ scale: 0.9 }} type="submit">
+        {data.cms.emailButtonText}
+      </Button>
+      <AnimatePresence>
+        {loading && (
+          <LoaderStyles
+            initial={{ opacity: 0, rotate: 0 }}
+            animate={{ opacity: 1, rotate: 359 }}
+            exit={{ opacity: 0, scale: 0 }}
+          />
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {message && (
+          <MessageStyles
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
+            error={error}
+          >
+            {message}
+          </MessageStyles>
+        )}
+      </AnimatePresence>
+    </Form>
+  );
 };
 
 export default Email;

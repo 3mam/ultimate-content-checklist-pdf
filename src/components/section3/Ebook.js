@@ -214,29 +214,29 @@ const Modal = ({ closeModal }) => {
     setLoading(true);
     if (counter < 4) {
       const email = emailInput;
-      const header = new Headers();
-      header.append('email', email);
-      const request = new Request('.netlify/functions/email', {
-        method: 'GET',
-        headers: header,
-      });
-      fetch(request).then((data) => {
+      fetch(`.netlify/functions/email`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: email }),
+      }).then((data) => {
         setCounter(counter + 1);
-        if (data.ok) {
+        if (data.status === 200) {
           setError(false);
           setMessage(
             'Thank you! Now check your email and confirm your subscription. 🚀',
           );
           setLoading(false);
           setTimeout(() => {
-            closeModal();
+            setMessage('');
           }, 8000);
         } else {
           setError(true);
           setMessage('Something went wrong, try again, please.');
           setLoading(false);
           setTimeout(() => {
-            closeModal();
+            setMessage('');
           }, 8000);
         }
       });
