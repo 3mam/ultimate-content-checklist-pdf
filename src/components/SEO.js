@@ -1,28 +1,30 @@
-import React from 'react'
-import {Helmet} from 'react-helmet'
-import {useStaticQuery, graphql} from 'gatsby'
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import { useStaticQuery, graphql } from 'gatsby';
 
-const SEO = ({children, location, description, title, image}) => {
+const SEO = ({ children, location, description, title, image }) => {
   const data = useStaticQuery(graphql`
-  query SeoQuery {
-    site {
-      siteMetadata {
-        title
-        siteUrl
-        description
-        twitter
+    query SeoQuery {
+      site {
+        siteMetadata {
+          title
+          siteUrl
+          description
+          twitter
+        }
       }
     }
-  }
-  `)
-  
+  `);
 
   return (
-    <Helmet defaultTitle={data.site.siteMetadata.title} titleTemplate={`%s | ${data.site.siteMetadata.title}`}>
+    <Helmet
+      defaultTitle={data.site.siteMetadata.title}
+      titleTemplate={`%s | ${data.site.siteMetadata.title}`}
+    >
       <html lang="pl" />
       <title>{title}</title>
       {/* Fav Icons */}
-      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      <link rel="icon" type="image/x-icon" href="favicon.ico" />
       <link rel="alternate icon" href="/favicon.ico" />
       {/* Meta Tags */}
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -41,6 +43,6 @@ const SEO = ({children, location, description, title, image}) => {
       {children}
     </Helmet>
   );
-}
+};
 
-export default SEO
+export default SEO;

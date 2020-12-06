@@ -2,8 +2,8 @@ require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
-    title: `The ultimate content checklist`,
-    siteUrl: `https://kryptonumstudio.com`,
+    title: `The ultimate content checklist from Kryptonum 🚀`,
+    siteUrl: `https://ultimate.kryptonum.co.uk`,
     description: `On the next few pages you will find some useful information regarding your post optimization followed by a simplified checklist which you can reuse each time you post something new to make sure you never miss a single step of the process!`,
     twitter: `@kryptonum`,
     author: `@kryptonum.studio`,

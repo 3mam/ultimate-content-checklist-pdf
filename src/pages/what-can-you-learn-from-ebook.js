@@ -1,11 +1,9 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import LogoDark from '../components/Logo';
 import SocialMediaLinks from '../components/section2/SocialMediaLinks';
 import WhatSectionParagraph from '../components/section2/WhatSectionParagraph';
 import WhatSectionTitle from '../components/section2/WhatSectionTitle';
 import Grid from '../components/section2/Grid';
-import device from '../utils/device';
 import Layout from '../components/Layout';
 import { Wrapper } from '../components/Wrapper';
 import { ContentWrapper } from '../components/ContentWrapper';

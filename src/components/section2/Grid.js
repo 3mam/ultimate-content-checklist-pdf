@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import device from '../../utils/device';
 
 const Cell = styled.div`
   -webkit-text-stroke: 1px black;

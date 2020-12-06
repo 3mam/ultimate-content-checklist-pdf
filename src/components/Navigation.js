@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { motion } from 'framer-motion';
-import { useLocation } from '@reach/router';
-import Logo from './Logo';
 import useCurrentWidth from '../hooks/useCurrentWidth';
 
 const DotsStyles = styled.div`

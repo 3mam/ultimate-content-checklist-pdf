@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
-import device from '../../utils/device';
 
 const StyledHeader = styled.h2`
   margin: 128px 0 0 0;

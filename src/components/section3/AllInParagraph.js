@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
-import device from '../../utils/device';
 
 const StyledParagraph = styled.p`
   margin: 44px 0px 145px 0;

@@ -6,6 +6,7 @@ import Navigation from './Navigation';
 import GlobalStyles from '../styles/GlobalStyles';
 import useCurrentWidth from '../hooks/useCurrentWidth';
 import _ from 'lodash';
+import SEO from './SEO';
 
 const StyledMain = styled(motion.main)`
   ${({ desktop }) =>
@@ -40,30 +41,33 @@ const Layout = ({ children }) => {
   useEffect(() => {
     const index = links.findIndex((link) => link.path === pathname);
     index !== -1 ? setActualBg(links[index].bg) : setActualBg('dark');
-  }, [pathname]);
+  }, [pathname, links]);
   const location = useLocation();
   let currentWidth = useCurrentWidth();
 
-  const handleUserKeyPress = useCallback((event) => {
-    if (currentWidth > 990) {
-      const { key, keyCode } = event;
-      if (keyCode === 40 || keyCode == 39) {
-        if (pathname === links[0].path) {
-          navigate(links[1].path);
-        } else if (pathname === links[1].path) {
-          navigate(links[2].path);
+  const handleUserKeyPress = useCallback(
+    (event) => {
+      if (currentWidth > 990) {
+        const { keyCode } = event;
+        if (keyCode === 40 || keyCode === 39) {
+          if (pathname === links[0].path) {
+            navigate(links[1].path);
+          } else if (pathname === links[1].path) {
+            navigate(links[2].path);
+          }
+        }
+        if (keyCode === 38 || keyCode === 37) {
+          // arrow up
+          if (pathname === links[1].path) {
+            navigate(links[0].path);
+          } else if (pathname === links[2].path) {
+            navigate(links[1].path);
+          }
         }
       }
-      if (keyCode === 38 || keyCode == 37) {
-        // arrow up
-        if (pathname === links[1].path) {
-          navigate(links[0].path);
-        } else if (pathname === links[2].path) {
-          navigate(links[1].path);
-        }
-      }
-    }
-  }, []);
+    },
+    [currentWidth, links, pathname],
+  );
 
   const handleUserScroll = useCallback(
     _.throttle((event) => {
@@ -82,7 +86,7 @@ const Layout = ({ children }) => {
         }
       }
     }, 1200),
-    [],
+    [links],
   );
 
   useEffect(() => {
@@ -95,11 +99,12 @@ const Layout = ({ children }) => {
         window.removeEventListener('wheel', handleUserScroll);
       };
     }
-  }, [handleUserKeyPress, handleUserScroll]);
+  }, [handleUserKeyPress, handleUserScroll, currentWidth]);
 
   return (
     <>
       <GlobalStyles desktop={currentWidth > 990} />
+      <SEO />
       <Navigation
         pathname={pathname}
         actualBg={actualBg}

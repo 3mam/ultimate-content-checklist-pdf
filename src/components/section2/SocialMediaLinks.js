@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 import { FaFacebookF, FaInstagram, FaAngellist } from 'react-icons/fa';
-import device from '../../utils/device';
 import { motion } from 'framer-motion';
 
 const Div = styled(motion.div)`

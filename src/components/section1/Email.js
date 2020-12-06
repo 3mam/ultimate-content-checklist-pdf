@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
-import device from '../../utils/device';
 import { AnimatePresence, motion } from 'framer-motion';
 
 const Form = styled(motion.form)`

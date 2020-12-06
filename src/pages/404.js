@@ -34,7 +34,14 @@ const NotFoundPage = () => {
       <SEO title="Not found page" />
       <Styles>
         <h1>
-          Not found 🤷‍♂️ <Link to="/">&rarr;</Link>
+          Not found{' '}
+          <span
+            role="img"
+            aria-label="A man holding his head and not knowing what to do"
+          >
+            🤷‍♂️
+          </span>{' '}
+          <Link to="/">&rarr;</Link>
         </h1>
       </Styles>
     </Layout>

@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
-import device from '../../utils/device';
 
 const Div = styled.div`
   width: 100%;

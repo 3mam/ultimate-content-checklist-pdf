@@ -4,12 +4,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import useCurrentWidth from '../../hooks/useCurrentWidth';
 import { AnimatePresence, motion } from 'framer-motion';
-import {
-  Input,
-  Button as ButtonForm,
-  LoaderStyles,
-  MessageStyles,
-} from '../section1/Email';
+import { Input, LoaderStyles, MessageStyles } from '../section1/Email';
 
 const Div = styled.div`
   background-color: #171717;

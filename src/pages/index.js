@@ -1,11 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import EbookCover from '../components/section1/EbookCover';
-import LogoLight from '../components/Logo';
 import HeroTitle from '../components/section1/HeroTitle';
 import HeroTextParagraph from '../components/section1/HeroTextParagraph';
 import Email from '../components/section1/Email';
-import device from '../utils/device';
 import Layout from '../components/Layout';
 import { motion } from 'framer-motion';
 import { Wrapper } from '../components/Wrapper';

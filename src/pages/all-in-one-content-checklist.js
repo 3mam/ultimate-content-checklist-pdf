@@ -1,10 +1,8 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import LogoDark from '../components/Logo';
 import AllInTitle from '../components/section3/AllInTitle';
 import AllInParagraph from '../components/section3/AllInParagraph';
 import Ebook from '../components/section3/Ebook';
-import device from '../utils/device';
 import Layout from '../components/Layout';
 import { Wrapper } from '../components/Wrapper';
 import { ContentWrapper } from '../components/ContentWrapper';
