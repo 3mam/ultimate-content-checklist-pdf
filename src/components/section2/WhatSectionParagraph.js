@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 
-const StyledParagraph = styled.p`
+const StyledParagraph = styled.div`
   margin: 0 0 49px 0;
   font-family: Poppins;
   font-size: 18px;
