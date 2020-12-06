@@ -28,10 +28,11 @@ const AllInParagraph = () => {
     }
   `);
 
-  const htmlString = { __html: data.cms.allInParagraph };
-
   return (
-    <StyledParagraph id="allInParagraph" dangerouslySetInnerHTML={htmlString} />
+    <StyledParagraph
+      id="allInParagraph"
+      dangerouslySetInnerHTML={{ __html: data.cms.allInParagraph }}
+    />
   );
 };
 

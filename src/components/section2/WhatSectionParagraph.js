@@ -32,12 +32,10 @@ const WhatSectionParagraph = () => {
     }
   `);
 
-  const htmlString = { __html: data.cms.whatSectionParagraph };
-
   return (
     <StyledParagraph
       id="whatSectionParagraph"
-      dangerouslySetInnerHTML={htmlString}
+      dangerouslySetInnerHTML={{ __html: data.cms.whatSectionParagraph }}
     />
   );
 };
