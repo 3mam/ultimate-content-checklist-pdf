@@ -30,9 +30,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Naszokraj`,
-        short_name: `naszokraj`,
-        lang: `pl`,
+        name: `Kryptonum`,
+        short_name: `kryptonum`,
+        lang: `en`,
         start_url: `/`,
         background_color: `#171717`,
         theme_color: `#171717`,
