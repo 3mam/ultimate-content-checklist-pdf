@@ -193,43 +193,9 @@ const Email = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
-    if (counter < 4) {
-      const email = emailInput;
-      fetch(`.netlify/functions/email`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email: email }),
-      }).then((data) => {
-        setCounter(counter + 1);
-        if (data.status === 200) {
-          setError(false);
-          setMessage(
-            'Thank you! Now check your email and confirm your subscription. 🚀',
-          );
-          setLoading(false);
-          setTimeout(() => {
-            setMessage('');
-          }, 8000);
-        } else {
-          setError(true);
-          setMessage('Something went wrong, try again, please.');
-          setLoading(false);
-          setTimeout(() => {
-            setMessage('');
-          }, 8000);
-        }
-      });
-    } else {
-      setMessage('Whoooah! You really like our newsletter! Thanks! 🤭');
-      setLoading(false);
-      setError(false);
-      setTimeout(() => {
-        setMessage('');
-      }, 5000);
-    }
+    setLoading(false);
+    setError(false);
+    setMessage('This is only demo 😊');
   };
 
   return (

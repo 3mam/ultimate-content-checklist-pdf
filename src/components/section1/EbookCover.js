@@ -4,7 +4,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 
 const Div = styled.div`
-  width: 100%;
+  width: 80%;
   height: auto;
   display: flex;
   align-items: center;
